@@ -270,7 +270,7 @@ Sledi preizkus izrisa grafov s knjižnicama `seaborn` in `Matplotlib`. Sledeča 
 
 === "Matplotlib"
     ```py
-    import matplotlib.pyplot as plt
+    import matplotlib.pyplot as plt 
 
     plt.scatter(x=data_df['Prvi stolpec'],
                 y=data_df['Drugi stolpec'])
