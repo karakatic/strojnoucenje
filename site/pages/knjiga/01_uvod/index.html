@@ -1,0 +1,644 @@
+
+<!doctype html>
+<html lang="sl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TODO">
+      
+      
+        <meta name="author" content="Sašo Karakatič">
+      
+      
+        <link rel="canonical" href="https://www.strojnoucenje.si/pages/knjiga/01_uvod/">
+      
+      <link rel="icon" href="../../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
+    
+    
+      
+        <title>Uvod - Strojno učenje</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.cd566b2a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link rel="stylesheet" href="../../../style.css">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#uvod" class="md-skip">
+          Skoči na vsebino
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+  <a href="https://twitter.com/squidfunk">
+    For updates follow <strong>@squidfunk</strong> on
+    <span class="twemoji twitter">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </span>
+    <strong>Twitter</strong>
+  </a>
+
+          </div>
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Strojno učenje" class="md-header__button md-logo" aria-label="Strojno učenje" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Strojno učenje
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Uvod
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Preklopi na temno"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Preklopi na temno" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Preklopi na svetlo"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Preklopi na svetlo" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Išči" placeholder="Išči" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Domov
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Knjiga
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../onama/" class="md-tabs__link">
+      Sodelovanje
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../onama/" class="md-tabs__link">
+      Avtorja
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Strojno učenje" class="md-nav__button md-logo" aria-label="Strojno učenje" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    Strojno učenje
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Domov
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Knjiga
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Knjiga" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Knjiga
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Uvod
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Uvod
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Kazalo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Kazalo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#komu-je-ta-knjiga-namenjena" class="md-nav__link">
+    Komu je ta knjiga namenjena?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#komu-ta-knjiga-ni-namenjena" class="md-nav__link">
+    Komu ta knjiga ni namenjena?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struktura-knjige-in-kje-zaceti" class="md-nav__link">
+    Struktura knjige in kje začeti
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_okolje/" class="md-nav__link">
+        Vzpostavitev okolja
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_strojno_ucenje/" class="md-nav__link">
+        Strojno učenje
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_klasifikacija/" class="md-nav__link">
+        Klasifikacija
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_knn/" class="md-nav__link">
+        K najbližjih sosedov
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../onama/" class="md-nav__link">
+        Sodelovanje
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../onama/" class="md-nav__link">
+        Avtorja
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="uvod">Uvod</h1>
+<p>Strojno učenje, umetna inteligenca, podatkovna znanost, podatkovno rudarjenje in velepodatki (ali kar veliki podatki). V zadnjih letih so to precej uporabljeni izrazi, ki jih zasledimo v novicah o revolucionarnih premikih na področjih obdelave podatkov, razpoznave slik ter videoposnetkov in obdelave besedila. S temi izrazi podjetniki zvito opišejo svoje storitve in produkte, da jim dvignejo vrednost ali jih lažje prodajo. S temi izrazi razvijalci programske opreme opišejo svoje izdelke, ko so se ti zmožni prilagajati na različne situacije. Pa gre res za revolucionarne metode ali le za trenutno modo oziroma modne besede (angl.<em>buzzwords</em>)? So algoritmi strojnega učenja res nekaj, kar izraža inteligentnost računalnika, ali pa gre le za kombinacijo <em>if</em> stavkov in statističnih metod?</p>
+<p>Žal ni enovitega odgovora. Inteligentnega in samostojnega stroja, kot so prikazani v nekaterih filmskih uspešnicah, ne moremo pričakovati še nekaj časa, če sploh kdaj. Vsekakor pa imajo pristopi strojnega učenja vrednost, kar kaže tudi vztrajnost zanimanja in njihove uporabe tako v industriji kakor tudi raziskovalni sferi. Strojno učenje je danes ključen sestavni del številnih komercialnih informacijskih sistemov in raziskovalnih projektov na različnih področjih - od medicinske diagnoze in zdravljenja<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, avtomatskega trgovanja z vrednostnimi papirji<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, samovozečih avtomobilov<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>, pa do priporočil na družbenih omrežjih in spletnih trgovinah<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>. Mnogi menijo, da je uporaba strojnega učenja primerna za uporabo le v velikih podjetjih z obsežnimi raziskovalnimi skupinami in globokimi žepi. S to knjigo ti avtorja želiva pokazati, kako enostavna je uporaba strojnega učenja, če le že poznaš osnove programiranja.</p>
+<p>Kot na drugih področjih, tudi pri strojnem učenju obstajajo tako kompleksni in napredni pristopi, kakor tudi enostavni. Za razumevanje najbolj naprednih pristopov (na primer globokega učenja (angl. <em>deep learning</em>)) res potrebujemo že kar nekaj semestrov matematike. Po drugi strani pa razumevanje najenostavnejših pristopov zahteva le izkušnje iz programiranja.</p>
+<p>Seveda se največ govori o najbolj naprednih metodah, ki terjajo ekipo dvestotih podatkovnih znanstvenikov (kot se imenujemo) in za dve košarkarski dvorani velik računalnik. V resnici pa večji del informacijskih sistemov, ki so podprti s strojnim učenjem, uporablja zelo elementarne tehnike. Vsakdo pa že ne potrebuje naprednega algoritma, ki identificira človeka iz treh pikslov. V večji meri so za obogatitev obstoječih sistemov dovolj enostavni pristopi, kar je razvidno iz uporabe umetne inteligence v praksi. Nova storitev, katere razvijalci poudarjajo, da je podprta z naprednimi pristopi umetne inteligence, res nima le nekaj pogojnih <em>if</em>-ov in osnovnih opisno statističnih izračunov, kljub temu pa navadno ni tako kompleksna, kot se mogoče zdi.</p>
+<h2 id="komu-je-ta-knjiga-namenjena">Komu je ta knjiga namenjena?</h2>
+<p>Ta knjiga služi kot uvod v področje strojnega učenja. Namenjena je tistim, ki že znajo programirati - idealno v programskem jeziku Python, saj so primeri prikazani z uporabo tega jezika. Zakaj Python? Ker je to eden izmed najbolj uporabljenih programskih jezikov za namen uporabe strojnega učenja. Knjiga se osredotoča na uporabo Pythona in knjižnice <a href="!https://scikit-learn.org/"><code>scikit-learn</code></a>, ki je osnovna knjižnica za uporabo strojnega učenja. Seveda se ne gre izogniti uporabi knjižnic <a href="!https://numpy.org/"><code>NumPy</code></a> in <a href="!https://matplotlib.org/"><code>Matplotlib</code></a> oz. <a href="!https://pandas.pydata.org/"><code>pandas</code></a> in <a href="!https://seaborn.pydata.org/"><code>seaborn</code></a> - ampak poudarek vsekakor ni na teh.</p>
+<p>Zavestno je bila narejena odločitev, da se knjiga preveč ne osredotoča na matematični vidik strojnega učenja. Drži, matematične formule so še vedno prisotne, ampak le do te mere, da pomagajo (ne pa ovirajo) pri razumevanju posameznih pristopov.</p>
+<p>Knjiga se osredotoči le na eno tehniko strojnega učenja - na klasifikacijo. Klasifikacija se predstavi na le enem, po mnenju avtorjev, najbolj intuitivnem algoritmu klasifikacije, imenovanemu <em>k</em> najbližjih sosedov. Ta algoritem je predstavljen nekoliko bolj podrobno, s čimer se ponazori, da ima vsak pristop strojnega učenja svoje posebnosti, ki ga naredijo bodisi primernega ali neprimernega za dan problem.</p>
+<h2 id="komu-ta-knjiga-ni-namenjena">Komu ta knjiga ni namenjena?</h2>
+<p>V knjigi avtorja okvirno predstaviva različne tehnike in področja strojnega učenja - podrobnosti pa izpustiva. Če te zanima regresija, katera izmed tehnik nenadzorovanega učenja ali delo z globokimi nevronskimi mrežami, ta knjiga ni zate. Vsak dober podatkovni znanstvenik je najprej spoznaval temelje strojnega učenja ter se šele potem posvetil naprednejšim tehnikam. Čemu nam bo napredna globoka nevronska mreža, če pa je ne znamo pravilno ovrednotiti? Knjiga je napisana tako, da bo samostojno nadaljevanje učenja kar se da enostavno.</p>
+<p>V knjigi niso omenjene vse možne knjižnice strojnega učenja v Pythonu ali možnosti uporabe strojnega učenja v drugih programskih jezikih. Četudi te delo na strojnem učenju v Pythonu zanese k uporabi <a href="!https://pytorch.org/"><code>PyTorcha</code></a> ali <a href="!https://www.tensorflow.org/"><code>TensorFlowa</code></a>, je <a href="!https://scikit-learn.org/"><code>scikit-learn</code></a> osnova, brez katere ne gre. Četudi te bosta delodajalec ali lastna radovednost v prihodnosti usmerila v uporabo strojnega učenja v drugih jezikih, so tudi ostale knjižnice strojnega učenja spisane po zgledu knjižnice <a href="!https://scikit-learn.org/"><code>scikit-learn</code></a>.</p>
+<p>Po površnem pregledu knjige bi kdo morda prišel do zaključka, da knjiga pokrije snov, ki bi jo lahko predstavili v eni objavi na blogu. Drži - če bi snov, predstavljeno v tej knjigi, strnili v programsko kodo, to ne bi bil kompleksen informacijski sistem, temveč le daljša Python skripta. Namen knjige ni, da predstavi čim več različnih načinov uporabe knjižnice <a href="!https://scikit-learn.org/"><code>scikit-learn</code></a> in predela vse možne algoritme v tej - temu namreč služi dokumentacija te knjižnice. Skozi branje se od bralca te knjige pričakuje, da vsak korak (oziroma vsako vrstico kode) razume - kaj se zgodi in čemu je namenjena. Skozi poglobljeno razumevanje ti avtorja želiva predati sposobnost nadaljnjega samostojnega učenja - kaj je pomembno pri določenem pristopu, kako se uporabi ta pristop, kako nastavitve vplivajo na rezultate in tako naprej. Povedano drugače, s knjigo te avtorja želiva naučiti samostojnega učenja snovi strojnega učenja.</p>
+<h2 id="struktura-knjige-in-kje-zaceti">Struktura knjige in kje začeti</h2>
+<p>Uvodu sledijo štiri poglavja.</p>
+<p><a href="../02_okolje/"><strong>Poglavje 2</strong></a> govori o vzpostavitvi okolja, ki bo primerno za uporabo knjižnic, ki jih knjiga vključuje, za zagon primerov iz knjige in za reševanje praktičnih nalog. Če imaš Python okolje že vzpostavljeno na svojem računalniku, lahko to poglavje preskočiš.</p>
+<p>TODO <a href="../04_klasifikacija/"><strong>Poglavje 3</strong></a> začne s splošno razlago definicije strojnega učenja in vzpostavi vzporednice tega z našim (človeškim) učenjem novega znanja. Večji del poglavja je namenjen predstavitvi glavne tehnike strojnega učenja v tej knjigi - klasifikaciji podatkov. Opisi in definicije gredo od najenostavnejše razlage na primerih pa do formalne matematične definicije pojmov. To poglavje preskoči, če si z osnovnimi tehnikami že seznanjen/-a in bi se želel/-a hitro posvetiti programiranju.</p>
+<p><a href="../02_okolje/"><strong>Poglavje 4</strong></a> obravnava izbran algoritem klasifikacije v tej knjigi - <em>k</em> najbližjih sosedov. Algoritem je najprej predstavljen neodvisno od programiranja na način, ki ti bo omogočal, da ga znaš rešiti tudi na roko. Predstavljene so nekatere nastavitve tega algoritma, s čimer se predstavi pomembnost poznavanja podrobnosti algoritma, da je uporaba tega kar se da učinkovita. Opisu in definicijam pa sledijo primeri v programski kodi. Ti primeri so napisani tako, da se lahko neposredno uporabijo pri testiranju in spoznavanju. Za utrjevanje znanja iz tega poglavja so priložene tudi štiri naloge - dve preverjata teoretično razumevanje in se rešita na roko, dve pa sta programerskega tipa. Tega poglavja nikar ne preskoči, saj predstavlja osnovo, brez katere ne gre.</p>
+<p><a href="../02_okolje/"><strong>Poglavje 5</strong></a> pa se dotakne pomembnega področja ovrednotenja kakovosti uporabljenih tehnik strojnega učenja. Strojno učenje nam prinese dodatno vrednost le, če deluje pravilno. Kako pa izmerimo, če deluje pravilno? V tem poglavju so predstavljene različne metrike kakovosti klasifikacijskih modelov in pristopi, k pravilni vzpostavi testnega okolja (in podatkov) za vrednotenje modelov. Ker je ovrednotenje kakovosti klasifikacijskih modelov ključnega pomena za razvoj uporabnih modelov, je tudi to poglavje priporočljivo za začetnike.</p>
+<p>Dobrodošel oziroma dobrodošla v svet strojnega učenja.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Holzinger, A., Langs, G., Denk, H., Zatloukal, K. and Müller, H., 2019. Causability and explainability of artificial intelligence in medicine. Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery, 9(4), p.e1312.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Fister, D., Mun, J.C., Jagrič, V. and Jagrič, T., 2019. Deep learning for stock market trading: a superior trading strategy?. Neural Network World, 29(3), pp.151-171.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Del Ser, J., Osaba, E., Sanchez-Medina, J.J. and Fister, I., 2019. Bioinspired computational intelligence and transportation systems: a long road ahead. IEEE Transactions on Intelligent Transportation Systems, 21(2), pp.466-495.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Bello-Orgaz, G., Jung, J.J. and Camacho, D., 2016. Social big data: Recent achievements and new challenges. Information Fusion, 28, pp.45-59.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../.." class="md-footer__link md-footer__link--prev" aria-label="Prejšnja stran: Domov" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Prejšnja stran
+              </span>
+              Domov
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../02_okolje/" class="md-footer__link md-footer__link--next" aria-label="Naslednja stran: Vzpostavitev okolja" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Naslednja stran
+              </span>
+              Vzpostavitev okolja
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Vse pravice pridržane &copy; 2022 Sašo Karakatič, Iztok Fister ml.
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:saso.karakatic@um.si" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/sasokarakatic/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.suggest", "search.highlight", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "instant"], "translations": {"clipboard.copy": "Kopiraj v odlo\u017ei\u0161\u010de", "clipboard.copied": "Kopirano v odlo\u017ei\u0161\u010de", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "I\u0161\u010di", "search.result.placeholder": "Vpi\u0161i iskalni niz", "search.result.none": "Ni zadetkov", "search.result.one": "1 zadetek", "search.result.other": "# zadetkov", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+  
+      <script src="../../../assets/javascripts/bundle.01de222e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script src="../../../overrides/assets/javascripts/bundle.752f5537.min.js"></script>
+
+  </body>
+</html>
