@@ -1,0 +1,961 @@
+
+<!doctype html>
+<html lang="sl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Pomoč pri uporabi strojnega učenja v Pythonu.">
+      
+      
+        <meta name="author" content="Sašo Karakatič">
+      
+      
+        <link rel="canonical" href="https://www.strojnoucenje.si/pages/knjiga/02_okolje/">
+      
+      <link rel="icon" href="../../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
+    
+    
+      
+        <title>Vzpostavitev okolja - Strojno učenje</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2b4465f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vzpostavitev-okolja" class="md-skip">
+          Skoči na vsebino
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Strojno učenje" class="md-header__button md-logo" aria-label="Strojno učenje" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Strojno učenje
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Vzpostavitev okolja
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Preklopi na temno"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Preklopi na temno" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Preklopi na svetlo"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Preklopi na svetlo" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Išči" placeholder="Išči" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Domov
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../00_knjiga/" class="md-tabs__link md-tabs__link--active">
+        Gradivo
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../avtorja/" class="md-tabs__link">
+      Avtorja
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Strojno učenje" class="md-nav__button md-logo" aria-label="Strojno učenje" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    Strojno učenje
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Domov
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Gradivo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Gradivo" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Gradivo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_knjiga/" class="md-nav__link">
+        Povzetek gradiva
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_uvod/" class="md-nav__link">
+        Uvod
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Vzpostavitev okolja
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Vzpostavitev okolja
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Kazalo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Kazalo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#razvojno-okolje-jupyter-notebook" class="md-nav__link">
+    Razvojno okolje Jupyter Notebook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uporaba-oblacnega-okolja" class="md-nav__link">
+    Uporaba oblačnega okolja
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namestitev-in-uporaba-lokalnega-okolja-anaconda" class="md-nav__link">
+    Namestitev in uporaba lokalnega okolja Anaconda
+  </a>
+  
+    <nav class="md-nav" aria-label="Namestitev in uporaba lokalnega okolja Anaconda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uporaba-jupyter-zvezkov" class="md-nav__link">
+    Uporaba Jupyter zvezkov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown-v-jupyter-zvezkih" class="md-nav__link">
+    Markdown v Jupyter zvezkih
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-koda-v-jupyter-zvezkih" class="md-nav__link">
+    Python koda v Jupyter zvezkih
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nalaganje-podatkov" class="md-nav__link">
+    Nalaganje podatkov
+  </a>
+  
+    <nav class="md-nav" aria-label="Nalaganje podatkov">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nalaganje-prostodostopnih-podatkov" class="md-nav__link">
+    Nalaganje prostodostopnih podatkov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nalaganje-lastnih-podatkov" class="md-nav__link">
+    Nalaganje lastnih podatkov
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_strojno_ucenje/" class="md-nav__link">
+        Strojno učenje
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_klasifikacija/" class="md-nav__link">
+        Klasifikacija
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_knn/" class="md-nav__link">
+        K najbližjih sosedov
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_kakovost_klasifikacije/" class="md-nav__link">
+        Kakovost klasifikacije
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_o_gradivu/" class="md-nav__link">
+        O gradivu
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../avtorja/" class="md-nav__link">
+        Avtorja
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="vzpostavitev-okolja">Vzpostavitev okolja</h1>
+<p>Za namen prikaza praktičnih primerov bo v tej knjigi uporabljen programski jezik Python, saj je en izmed bolj priljubljenih programskih jezikov z odličnim naborom knjižnic strojnega učenja. Za razumevanje primerov je vsekakor priporočljivo poznavanje tega programskega jezika ali vsaj splošno poznavanje enega izmed modernih programskih jezikov (Java, Perl, C#, R, C, C++). Sledijo navodila vzpostavitve okolja, primernega za izvedbo praktičnih primerov na svojem računalniku.</p>
+<h2 id="razvojno-okolje-jupyter-notebook">Razvojno okolje Jupyter Notebook</h2>
+<p>Vsi praktični primeri v knjigi so prikazani tako, da se brez težave izvedejo v <a href="http://jupyterlab.io/">JupyterLab</a> okolju. To razvojno okolje omogoča pisanje Python programske kode v tako imenovanih Jupyter zvezkih (angl. <em>Jupyter notebooks</em>). </p>
+<p>Ti zvezki se urejajo v poljubnem spletnem brskalniku in zato za urejanje ne potrebujejo namenskega orodja. Posebnost kode, zapisane v Jupyter zvezkih, je, da je ta v eni datoteki (zvezku) mešana s takojšnjimi izpisi kode in navodili, ki jih razvijalci zapišemo sproti za razlago delovanja kode. Zvezki so razdeljeni na tako imenovane celice, kjer je celica bodisi navodilo ali pa programska koda z izpisom rezultata, kot je prikazano na spodnji sliki.</p>
+<figure>
+<p><img alt="Jupyter zvezek na spletni storitvi Google Colab." src="../../fig/notebook0.png" />
+  </p>
+<figcaption>Jupyter zvezek na spletni storitvi Google Colab.</figcaption>
+</figure>
+<p>Namen takega razvoja je, da je programska koda z navodili enostavno deljiva in razumljiva. Prav tako razvoj v zvezku omogoča inkrementalno zaganjanje kode, celico za celico - tako se zaženejo le želeni deli kode in ne celotna datoteka. To je idealen način razvoja za učenje in za raziskovanje. Jupyter zvezki so postali privzeti način razvoja na področju podatkovne znanosti, saj zadostijo primarnemu namenu podatkovne znanosti - odkrivanju vzorcev in pregledu podatkov skozi zgodbo. Tako je vsaka celica s kodo in priloženo celico navodil kar en del zgodbe, kjer celica z navodili opiše, kaj bo celica s kodo naredila ter povzame njene rezultate.</p>
+<p>Alternativnih razvojnih okolij je mnogo. Od popolnoma namenskih za programiranje v Pythonu, kot sta <a href="https://www.jetbrains.com/pycharm/">PyCharm</a> in <a href="https://www.spyder-ide.org/">Spyder</a>, pa do splošnih razvojnih okolij, kot sta <a href="https://code.visualstudio.com/">Visual Studio Code</a> in <a href="https://atom.io/">Atom</a>.</p>
+<h2 id="uporaba-oblacnega-okolja">Uporaba oblačnega okolja</h2>
+<p>Prvi način uporabe Jupyter zvezkov za namen strojnega učenja je uporaba ene izmed ponujenih storitev. V ta namen so na voljo številni ponudniki z bodisi zastonjskimi ali plačljivimi storitvami izvajanja Python kode v oblaku. Dober primer take storitve je <a href="https://colab.research.google.com/">Google Colab</a>, ki vsem svojim uporabnikom ponuja kreacijo Jupyter zvezkov in zagon teh na Googlovih strežnikih, do določene mere zastonj - v času pisanja knjige je uporaba Google Colab zvezkov za namen zagona primerov in nalog bila brezplačna. Google Colab je prikazan prav na zgornji sliki.</p>
+<p>Konkurence na področju oblačnih zvezkov je ogromno in uporabnost teh se mesečno spreminja ter je vezana na ceno storitve, dostopnost slovenskim razvijalcem in nabor funkcionalnosti. Preprosto spletno iskanje "Jupyter Notebook service"~ali "Google Colab alternative"~vrne številne rezultate. V času pisanja knjige so med omembe vrednimi bile storitve drugih gigantov strojnega učenja <a href="https://ml.azure.com/">Microsoft Azure Machine Learning</a> in <a href="https://aws.amazon.com/sagemaker/">Amazon SageMaker</a> ter s strojno opremo radodarna <a href="https://www.paperspace.com/">Paperspace</a> in <a href="https://deepnote.com/">Deepnote</a>.</p>
+<h2 id="namestitev-in-uporaba-lokalnega-okolja-anaconda">Namestitev in uporaba lokalnega okolja Anaconda</h2>
+<p>V tej sekciji bo predstavljeno, kako vzpostavimo primerno okolje na svojem računalniku. Da namestimo Python in vse potrebne knjižnice, se bomo zatekli k okolju Anaconda, ki vsebuje tako Python kot skupek številnih knjižnic, ki se uporabljajo za namen analize podatkov. Na uradni spletni strani okolja Anaconda poiščemo predel za prenos različice, namenjene za posameznike. V času pisanja knjige se ta različica imenuje <em>Individual Edition</em> in je dosegljiva na <a href="https://www.anaconda.com/products/individual">uradni spletni strani</a> ter prikazana spodaj.</p>
+<figure>
+<p><img alt="Spletna stran Python okolja Anaconda." src="../../fig/anaconda_download.png" />
+  </p>
+<figcaption>Spletna stran Python okolja Anaconda.</figcaption>
+</figure>
+<p>Okolje Anaconda poleg programskega jezika Python namesti tudi številne knjižnice, namenjene za podatkovno analizo v tem programskem jeziku. Skozi knjigo bomo uporabili številne izmed teh:</p>
+<ul>
+<li><code>NumPy</code>, ki se uporablja za upravljanje s podatki v matričnih in več-dimenzionalnih poljih. Podrobnejšega dela s to knjižnico ne bo, je pa vseeno dobro, da se zavedamo, da je to ena izmed ključnih knjižnic, ko imamo opravek s podatki in analizo teh. Ta knjižnica je tudi sestavni del sledeče knjižnice.</li>
+<li><code>pandas</code> je knjižnica, ki je namenjena za manipulacijo in analizo podatkov v tabelarični obliki. Čeprav v zaledju uporablja knjižnico <code>NumPy</code>, so določene operacije nad podatki poenostavljene.</li>
+<li><code>scikit-learn</code> je knjižnica, ki vsebuje implementacije različnih algoritmov, metrik in pristopov pred-procesiranja za strojno učenje. Algoritem klasifikacije, ki bo predstavljen v tej knjigi, je povzet po implementaciji iz te knjižnice.</li>
+<li><code>Matplotlib</code>, ki se uporablja za prikaz grafov različnih vrst. Je zelo prilagodljiva, saj omogoča velik nabor različnih tipov vizualizacij podatkov in prilagoditve teh (tako stilno, kot vsebinsko). Je pa zaradi svoje prilagodljivost delo s to knjižnico nekoliko težje in zaradi tega uporabljamo ...</li>
+<li><code>seaborn</code>, ki poenostavi prikaz grafov. V zaledju uporablja knjižnico <code>Matplotlib</code>, ampak preko svojih vmesnikov določene pogoste operacije pri risanju grafov poenostavi.</li>
+</ul>
+<h3 id="uporaba-jupyter-zvezkov">Uporaba Jupyter zvezkov</h3>
+<p>Za pisanje Jupyter zvezkov na lastnem računalniku je najprej potreben zagon okolja JupyterLab, za kar lahko uporabimo enega izmed dveh načinov. Prvi način je zagon JupyterLaba ročno iz komandne vrstice:
+1. Zaženemo komandno vrstico. V Windowsih sta to bodisi Command Prompt ali PowerShell. V Linux in MacOS operacijskih sistemih pa je komanda vrstica največkrat pod imenom Terminal.
+2. Zaženemo ukaz <code>jupyter lab</code>.
+3. Odpre se okno brskalnika in pokaže se domača stran JupyterLab, kot je prikazano na spodnji sliki.</p>
+<p>Drugi način je preko uporabniškega vmesnika okolja Anaconda.</p>
+<ol>
+<li>Zaženemo Anaconda Navigator. </li>
+<li>V seznamu ponujenih aplikacij najdimo JupyterLab in ga s pritiskom možnosti <em>Launch</em> zaženemo.</li>
+<li>Odpre se okno brskalnika in pokaže se domača stran JupyterLab, kot je prikazano na sledeči sliki.</li>
+</ol>
+<figure>
+<p><img alt="Domača stran JupyterLab okolja." src="../../fig/jupyterlab.png" />
+  </p>
+<figcaption>Domača stran JupyterLab okolja.</figcaption>
+</figure>
+<p>Po želji naredimo novo mapo, kamor shranimo naše zvezke in druge podporne datoteke. V tej mapi ustvarimo novi zvezek, kot je prikazano sledeče.</p>
+<figure>
+<p><img alt="Kreacija novega zvezka v JupyterLab okolju." src="../../fig/jupyterlab1.png" />
+  </p>
+<figcaption>Kreacija novega zvezka v JupyterLab okolju.</figcaption>
+</figure>
+<p>Odpre se novo okno s praznim zvezkom, kot je prikazano spodaj. Jupyter zvezke razvijamo preko spletnega vmesnika, kar je tudi razlog za prikaz spletnega brskalnika.</p>
+<figure>
+<p><img alt="Nov prazen Jupyter zvezek." src="../../fig/notebook1.png" />
+  </p>
+<figcaption>Nov prazen Jupyter zvezek.</figcaption>
+</figure>
+<p>Zgornja slika ima označene pomembne dele uporabniškega vmesnika. Oznaka <strong>1</strong> prikazuje naslov zvezka, kar s klikom na napis lahko spremenimo. Oznaka <strong>2</strong> prikazuje tip celice, ki je trenutno izbrana, oznaka <strong>3</strong> pa prikazuje trenutno izbrano in hkrati zaenkrat še edino celico.</p>
+<h3 id="markdown-v-jupyter-zvezkih">Markdown v Jupyter zvezkih</h3>
+<p>Za začetek spremenimo tip prve celice na <em>Markdown</em>, ki je stil zapisa navodil in druge vsebine v celico. V celico zapišemo sledeč Markdown zapis.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Prvi primer</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>V <span class="gs">__prvem__</span> primeru bomo:
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">-</span> Naredili prvi izpis <span class="sb">`Python`</span> kode.
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">-</span> Naredili prvi graf s pomočjo <span class="ge">_seaborn_</span> knjižnice.
+</code></pre></div>
+<p>S pritiskom na gumb zagona, ki je na prejšnji sliki <strong>4</strong> (ali s pritiskom <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span>), se izbrana celica izvede in izbere se (ter če ne obstaja se tudi ustvari) naslednja celica. Ker je izbrana celica bila tipa Markdown, se je zapisana koda oblikovala po stilu Markdown zapisa. Osnovni ukazi za zapis Markdowna so sledeči.</p>
+<p>Z znakom #, čemur sledi presledek definiramo naslov.</p>
+<ul>
+<li><code>#</code> za glavne naslove,</li>
+<li><code>##</code> za podnaslove,</li>
+<li><code>###</code> za tretji nivo naslovov, pa vse do šestega nivoja naslovov z <code>######</code>.</li>
+</ul>
+<p>Besedilo lahko tudi poudarimo.</p>
+<ul>
+<li><em>Poševno</em> zapisano besedilo: <code>_besedilo_</code> ali <code>*besedilo*</code> ter</li>
+<li><strong>krepko</strong>_ zapisano besedilo: <code>__besedilo__</code> ali <code>**besedilo**</code>.</li>
+</ul>
+<p>Dodamo lahko tudi neurejen seznam, tako da vsak element seznama zapišemo v svoji vrstici, začnemo pa ga bodisi z znakom <code>*</code> ali z <code>-</code>. Sezname lahko gnezdimo - ugnezdene elemente zamaknemo s tabulatorjem.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">-</span> Prvi element.
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">*</span> Drugi element.
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">-</span> Prvi ugnezden element.
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="k">-</span> Pa še drugi.
+</code></pre></div>
+<p>Urejene sezname, kjer si elementi sledijo v vrstnem redu, pa ustvarimo tako, da pred elemente dodamo številko ali oznako vrstnega reda. Tudi take sezname lahko gnezdimo. Številko vrstnega reda lahko podamo poljubno, saj ni potrebno, da so te v pravem vrstnem redu.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">1.</span> Prvi element.
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">2.</span> Drugi element.
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">11.</span> Prvi ugnezden element.
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="k">12.</span> Pa še drugi.
+</code></pre></div>
+<p>Besedilo v stilu kode pa v besedilo zapišemo med znakoma <code>`</code>, ki ga na slovenski tipkovnici izberemo z <span class="keys"><kbd class="key-alt-graph">AltGr</kbd><span>+</span><kbd class="key-7">7</kbd></span>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Spremenljivka <span class="sb">`vrednost`</span> in razred <span class="sb">`podatki`</span>.
+</code></pre></div>
+<p>Tabelo vstavimo vrstico po vrstico, vsaka celica v vrstici se začne in konča z znakom <code>|</code> (na slovenski tipkovnici <span class="keys"><kbd class="key-alt-graph">AltGr</kbd><span>+</span><kbd class="key-w">W</kbd></span>). Tako je ena vrstica s tremi celicami zapisana na sledeč način.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>|Prva celica|Druga celica|Tretja celica|
+</code></pre></div>
+<p>Črte med vrstice pa dodamo kar z znakom <code>-</code> namesto vsebine celice. Primer tabele s tremi stolpci in tremi vrsticami ter črto med prvo in drugo vrstico izgleda sledeče.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>|Prva vrstica in prvi stolpec|Drugi stolpec|Tretji stolpec|
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>|-|-|-|
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>|Druga vrstica|12|-42|
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>|Tretja vrstica|-7|65|
+</code></pre></div>
+<p>Za lažjo razumevanje kode lahko to nekoliko oblikujemo s presledki.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>|Prva vrstica in prvi stolpec|Drugi stolpec|Tretji stolpec|
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>|----------------------------|-------------|--------------|
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>|Druga vrstica               |12           |-42           |
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>|Tretja vrstica              |-7           |65            |
+</code></pre></div>
+<p>Hiperpovezave vstavljamo s sledečo kodo <code>[Napis povezave](URL)</code>, slike pa z zapisom <code>![Naziv slike](URL do datoteke slike)</code> - razlika je v klicaju.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[<span class="nt">Povezava do iskalnika Google</span>](<span class="na">http://www.google.com/</span>)
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>![<span class="nt">Primer slike</span>](<span class="na">/imgs/slika.png</span>)
+</code></pre></div>
+<p>Če ne gre drugače, pa lahko vsebino celic navodil oblikujemo tudi s preprosto HTML kodo. HTML in Markdown zapis lahko po želji mešamo. Končen primer vsega skupaj bi zapisali s sledečo kodo, rezultat pa je prikazan na sliki pod kodo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gu">## Preizkus Markdown zapisa</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">1.</span> Preizkusili smo oblikovanje pisav
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="k">1.</span> <span class="gs">__krepko__</span> in
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="k">2.</span> <span class="ge">_poševno_</span> pisavo
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">2.</span> Pisanje seznamov
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="k">-</span> urejenih in neurejenih,
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="k">-</span> ter ugnezdenih
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="k">3.</span> Dodajanje [<span class="nt">povezava</span>](<span class="na">http://www.um.si/</span>)
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="k">4.</span> Dodajanje slik
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>![<span class="nt">FERI</span>](<span class="na">https://feri.um.si/site/images/logo-feri.png</span>)
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="k">5.</span> Pisanje v stilu <span class="sb">`programske kode`</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="k">6.</span> Dodajanje tabel
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>|Prva vrstica in prvi stolpec|Drugi stolpec|Tretji stolpec|
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>|----------------------------|-------------|--------------|
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>|Druga vrstica               |12           |-42           |
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>|Tretja vrstica              |-7           |65            |
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="k">7.</span> Tudi &lt;a href=&quot;https://feri.um.si/&quot;&gt;HTML koda&lt;/a&gt; deluje.
+</code></pre></div>
+<figure>
+<p><img alt="Rezultat Markdown zapisa." src="../../fig/notebook3.png" />
+  </p>
+<figcaption>Rezultat Markdown zapisa.</figcaption>
+</figure>
+<h2 id="python-koda-v-jupyter-zvezkih">Python koda v Jupyter zvezkih</h2>
+<p>Če ima celica vsebino tipa <em>Code</em>, pa se vsebina smatra kot Python koda - primerno je tudi obarvana, deluje avtomatsko dopolnjevanje kode (angl. <em>code auto-completion</em>) in rezultati kode se izpišejo kar takoj pod celico. Sledi primer zapisa programske kode v celico.</p>
+<p>V prvi vrstici se uvozi knjižnica <code>NumPy</code> ter se poimenuje kot <code>np</code> za nadaljnjo uporabo. Sledi izpis niza znakov z ukazom <code>print()</code> - izpis sledi kar pod celico, kot je prikazano na sledeči sliki. Tretja vrstica vsebuje komentar v kodi, ki opisuje zadnjo vrstico. Zadnja vrstica pa vsebuje klic metode <code>rand()</code> knjižnice <code>NumPy</code>, ki vrne polje naključnih števil po podanih velikostih (v primeru je podana velikost polja s tremi vrsticami in dvema stolpcema). Ker ta vrstica vsebuje tudi zadnji ukaz, ki vrača rezultat, se rezultat tega izpiše tudi pod celico.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sledi izpis polja naključnih števil s tremi vrsticami in dvema stolpcema.&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Rezultat zadnjega ukaza v celici se izpiše kot rezultat celice.</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Sledi izpis polja naključnih števil s tremi vrsticami in dvema stolpcema.
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>array(0.27687911, 0.19824952, 
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>      0.06910974, 0.7548379, 
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>      0.64441325, 0.11951306)
+</code></pre></div>
+</div>
+<figure>
+<p><img alt="Prvi preizkus zapisa Python kode v Jupyter zvezek." src="../../fig/notebook4.png" />
+  </p>
+<figcaption>Prvi preizkus zapisa Python kode v Jupyter zvezek.</figcaption>
+</figure>
+<p>Preizkusimo še uporabo knjižnice <code>pandas</code>, ki se uvozi v prvi vrstici kode. Kot že omenjeno pri prvi predstavitvi knjižnice, ta v zaledju uporablja podatke v obliki <code>NumPy</code> polj. To dejstvo lahko izkoristimo pri kreaciji nove strukture podatkov - v <code>pandas</code>-u je to razpredelnica, poimenovana <code>DataFrame</code>. Sledeča koda ustvari polje naključnih števil s 100 vrsticami in dvema stolpcema, ki pa služi pri kreaciji razpredelnice <code>DataFrame</code>. V <code>DataFrame</code> razpredelnici lahko stolpce in vrstice poimenujemo, kot je prikazano s podanim parametrom <code>columns</code>. Zadnja vrstica kliče metodo <code>head()</code> naše instance <code>data_df</code> razreda <code>DataFrame</code>, ki vrne prvih pet vrstic te razpredelnice, kot tudi kaže slika pod kodo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">data_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_np</span><span class="p">,</span> 
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>                       <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Prvi stolpec&#39;</span><span class="p">,</span> 
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>                                <span class="s1">&#39;Drugi stolpec&#39;</span><span class="p">])</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>       Prvi stolpec  Drugi stolpec
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>0      0.753358      0.029272
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>1      0.901894      0.846576
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>2      0.492876      0.533067
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>3      0.943245      0.538149
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>4      0.567161      0.537613
+</code></pre></div>
+</div>
+<figure>
+<p><img alt="Preizkus delovanja knjižnice pandas." src="../../fig/notebook6.png" />
+  </p>
+<figcaption>Preizkus delovanja knjižnice <code>pandas</code>.</figcaption>
+</figure>
+<p>Sledi preizkus izrisa grafov s knjižnicama <code>seaborn</code> in <code>Matplotlib</code>. Sledeča koda prikazuje izris grafa raztrosa (angl. <em>scatter plot</em>) za prej ustvarjeno razpredelnico <code>data_df</code> v obeh knjžnicah.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">seaborn</label><label for="__tabbed_1_2">Matplotlib</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Prvi stolpec&#39;</span><span class="p">],</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>                <span class="n">y</span><span class="o">=</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Drugi stolpec&#39;</span><span class="p">])</span>
+</code></pre></div>
+<div class="result" markdown>
+  <figure markdown>
+    <img alt="Preizkus izrisa grafa raztrosa s knjižnico  &lt;code&gt;seaborn&lt;/code&gt;." src="../../fig/notebook7.png" />
+    <figcaption>Preizkus izrisa grafa raztrosa s knjižnico  <code>seaborn</code>.</figcaption>
+  </figure>
+</div></p>
+</div>
+<div class="tabbed-block">
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Prvi stolpec&#39;</span><span class="p">],</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>            <span class="n">y</span><span class="o">=</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Drugi stolpec&#39;</span><span class="p">])</span>
+</code></pre></div>
+<div class="result" markdown>
+  <figure markdown>
+    <img alt="Preizkus izrisa grafa raztrosa s knjižnico &lt;code&gt;Matplotlib&lt;/code&gt;." src="../../fig/notebook8.png" />
+    <figcaption>Preizkus izrisa grafa raztrosa s knjižnico <code>Matplotlib</code>.</figcaption>
+  </figure>
+</div></p>
+</div>
+</div>
+</div>
+<p>Na prvi pogled se zdi uporaba <code>seaborn</code> in <code>Matplotlib</code> knjižnic podobna, kar tudi v resnici je. Nekatere tehnike grafične predstavitve podatkov je s knjižnico <code>seaborn</code> lažje narediti, medtem, ko je pri izrisu grafov <code>Matplotlib</code> mnogo bolj prilagodljiv.</p>
+<p>Sedaj bomo preizkusili še knjižnico <code>scikit-learn</code>, ki vsebuje različne pristope, metode ter tehnike strojnega učenja in predprocesiranja podatkov. Preden se lotimo uporabe metod strojnega učenja, bomo tokrat preizkusili nalaganje priloženih podatkov v knjižnici <code>scikit-learn</code>. Ena izmed priloženih je podatkovna zbirka <em>Iris</em>, ki vsebuje podatke o cvetočih rastlinah perunikah. V prvi vrstici se najprej naloži modul knjižnice <code>scikit-learn</code>, v drugi vrstici pa se naloži podatkovna zbirka <em>Iris</em> ter se shrani v spremenljivko <code>iris_vse</code>. Ker smo pri klicu metode podali <code>as_frame=True</code>, bodo rezultati v obliki <code>pandas</code> razpredelnice <code>DataFrame</code>. Če tega ne bi podali, pa bi rezultat podatkov bil v obliki <code>NumPy</code> polja. Shranjeni podatki v spremenljivki <code>iris_vse</code> imajo več vrednosti: vrednost <code>data</code> nam vrne podatke o rožah (višine in širine čašnih in cvetnih listov). Vrednost <code>target</code> pa nam vrne vrednosti razredov te podatkovne zbirke - za kateri tip perunike gre. Zadnja vrstica kode izpiše prvih pet vrstic podatkov.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">iris_vse</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">iris_podatki</span> <span class="o">=</span> <span class="n">iris_vse</span><span class="o">.</span><span class="n">data</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">iris_razredi</span> <span class="o">=</span> <span class="n">iris_vse</span><span class="o">.</span><span class="n">target</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">iris_podatki</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>     sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>0    5.1                3.5               1.4                0.2
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>1    4.9                3.0               1.4                0.2
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>2    4.7                3.2               1.3                0.2
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>3    4.6                3.1               1.5                0.2
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>4    5.0                3.6               1.4                0.2
+</code></pre></div>
+</div>
+<p>Za konec preizkusimo z izrisom grafa raztrosa, kjer bodo pike vsake izmed instanc pobarvane glede na podan razred te instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sepal length (cm)&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>                <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sepal width (cm)&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>                <span class="n">data</span><span class="o">=</span><span class="n">iris_podatki</span><span class="p">,</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>                <span class="n">hue</span><span class="o">=</span><span class="n">iris_razredi</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<figure>
+<p><img alt="Graf raztrosa podatkovne zbirke Iris." src="../../fig/notebook9.png" />
+  </p>
+<figcaption>Graf raztrosa podatkovne zbirke <i>Iris</i>.</figcaption>
+</figure>
+</div>
+<p>Tokrat smo za parameter <code>data</code> podali kar razpredelnico <code>iris_podatki</code>, ki je <code>pandas DataFrame</code>. Parametra <code>x</code> in <code>y</code> smo tokrat zapisali kot niz znakov - imena stolpcev iz podane razpredelnice. S parametrom <code>hue</code> določimo, kako se oznake na grafu pobarvajo. Lahko bi podali tudi ime stolpca (ki pa ga tokrat v razpredelnici <code>data</code> nimamo), ali pa kot ločeno spremenljivko razpredelnice s temi podatki (kot smo naredili tokrat z <code>iris_razredi</code>).</p>
+<h2 id="nalaganje-podatkov">Nalaganje podatkov</h2>
+<p>Da lahko izvedemo analize in uporabimo algoritme strojnega učenja, pa potrebujemo podatke. Sledeča sekcija pregleda, kako naložimo podatke v naš Python program oziroma Jupyter zvezek.</p>
+<h3 id="nalaganje-prostodostopnih-podatkov">Nalaganje prostodostopnih podatkov</h3>
+<p>Že v prejšnji sekciji smo pokazali, kako lahko dostopamo do standardnih podatkovnih zbirk, ki se mnogokrat uporabljajo v procesu učenja. To smo storili s pomočjo knjižnice <code>scikit-learn</code>, saj so preko te knjižnice že nameščene številne podatkovne zbirke. Skozi celotno knjigo bomo največkrat uporabili podatkovno zbirko <em>Iris</em>, v nalogah pa bodo uporabljene tudi <em>Wine</em> in <em>Breast cancer</em>. V vseh primerih gre za podatkovne zbirke, namenjene klasifikaciji. Nabor podatkovnih zbirk, ki so priložene tej knjižnici, je dostopen na <a href="https://scikit-learn.org/stable/datasets/toy_dataset.html">sledečem naslovu</a> za enostavne in majhne zbirke ter na <a href="https://scikit-learn.org/stable/datasets/real_world.html">tem naslovu</a> za zbirke iz realnega sveta.</p>
+<p>Podatkovne zbirke iz <code>scikit-learn</code> vrnejo objekt s sledečimi vrednostmi:</p>
+<ul>
+<li><code>data</code> je razpredelnica s podatki vseh instanc,</li>
+<li><code>target</code> je polje z rešitvami vseh instanc,</li>
+<li><code>feature_names</code> je seznam imen vseh atributov, ki so v <code>data</code> ter</li>
+<li><code>target_names</code> je seznam imen rešitev (če gre za razrede).</li>
+</ul>
+<p>Če nam priložene prostodostopne podatkovne zbirke niso dovolj, lahko uporabimo poljubno podatkovno zbirko iz portala <a href="https://www.openml.org/">OpenML.org</a>. Ta portal igra vlogo repozitorija za podatkovne zbirke. Te lahko uporabniki portala prosto nalagajo na portal in tudi do njih dostopajo. Knjižnica <code>scikit-learn</code> ponuja vmesnik za neposredno nalaganje teh datotek s pomočjo metode <code>fetch_openml</code>, kateri podamo ime zbirke, kot kaže spodnja koda.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">podatki</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ecoli&#39;</span><span class="p">)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>[&#39;mcg&#39;, &#39;gvh&#39;, &#39;lip&#39;, &#39;chg&#39;, &#39;aac&#39;, &#39;alm1&#39;, &#39;alm2&#39;]
+</code></pre></div>
+</div>
+<p>Tudi pri nalaganju podatkovnih zbirk iz <em>OpenML.org</em> lahko <code>fetch_openml</code> metodi povemo, da želimo razpredelnico <code>DataFrame</code>. To storimo enako kot pri nalaganju priloženih podatkovnih zbirk, s podajo <code>as_frame=True</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">podatki</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;nursery&#39;</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>0 recommend
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>1 priority
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>2 not_recom
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>3 recommend4 priority
+</code></pre></div>
+</div>
+<h3 id="nalaganje-lastnih-podatkov">Nalaganje lastnih podatkov</h3>
+<p>Podatke lahko v program oziroma zvezek naložimo s pomočjo knjižnice <code>pandas</code>, ki prepozna podatke v številnih različnih <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html">formatih</a>:</p>
+<ul>
+<li>tekstovne datoteke, kjer so podatki ločeni z znaki (npr. z vejico v CSV, tabulatorjem ali drugim znakom),</li>
+<li>JSON format tekstovne datoteke,</li>
+<li>HTML spletne strani, iz katerih se podatki preberejo iz elementa <code>&lt;table&gt;</code>,</li>
+<li>Excel ali OpenDocument razpredelnice,</li>
+<li>Lastniške SAS ali SPSS datoteke podatkov,</li>
+<li>podatkovne baze s SQL klicem ter</li>
+<li>lokalne odložišča (angl. <em>clipboard</em>).</li>
+</ul>
+<p>Primer nalaganja iz CSV datoteke, kjer so vrednosti ločene s podpičjem <code>;</code> prikazuje spodnja koda. Vsak format ima svojo metodo za prebiranje datotek, saj so določene nastavitve formatu specifične. Pri prebiranju iz tekstovnih datotek tako lahko podamo znak, ki ločuje vrednosti s <code>sep</code>, znak ločevanja decimalnih mest s <code>dec</code>, vrstico, ki predstavlja imena atributov, s <code>header</code> ali pa podamo ta imena kar v <code>names</code>.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">podatki</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datoteka.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+</code></pre></div>
+S pomočjo tega je po prebiranju knjige mogoče osvojeno znanje aplicirati na lastne podatke.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../01_uvod/" class="md-footer__link md-footer__link--prev" aria-label="Prejšnja stran: Uvod" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Prejšnja stran
+              </span>
+              Uvod
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../03_strojno_ucenje/" class="md-footer__link md-footer__link--next" aria-label="Naslednja stran: Strojno učenje" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Naslednja stran
+              </span>
+              Strojno učenje
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Vse pravice pridržane &copy; 2022 Sašo Karakatič, Iztok Fister ml.
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:saso.karakatic@um.si" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/sasokarakatic/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.suggest", "search.highlight", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "instant"], "translations": {"clipboard.copy": "Kopiraj v odlo\u017ei\u0161\u010de", "clipboard.copied": "Kopirano v odlo\u017ei\u0161\u010de", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "I\u0161\u010di", "search.result.placeholder": "Vpi\u0161i iskalni niz", "search.result.none": "Ni zadetkov", "search.result.one": "1 zadetek", "search.result.other": "# zadetkov", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

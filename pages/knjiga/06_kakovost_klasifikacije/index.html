@@ -1,0 +1,1217 @@
+
+<!doctype html>
+<html lang="sl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Pomoč pri uporabi strojnega učenja v Pythonu.">
+      
+      
+        <meta name="author" content="Sašo Karakatič">
+      
+      
+        <link rel="canonical" href="https://www.strojnoucenje.si/pages/knjiga/06_kakovost_klasifikacije/">
+      
+      <link rel="icon" href="../../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
+    
+    
+      
+        <title>Kakovost klasifikacije - Strojno učenje</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2b4465f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kakovost-klasifikacije" class="md-skip">
+          Skoči na vsebino
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Strojno učenje" class="md-header__button md-logo" aria-label="Strojno učenje" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Strojno učenje
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kakovost klasifikacije
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Preklopi na temno"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Preklopi na temno" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Preklopi na svetlo"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Preklopi na svetlo" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Išči" placeholder="Išči" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Domov
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../00_knjiga/" class="md-tabs__link md-tabs__link--active">
+        Gradivo
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../avtorja/" class="md-tabs__link">
+      Avtorja
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Strojno učenje" class="md-nav__button md-logo" aria-label="Strojno učenje" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    Strojno učenje
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Domov
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Gradivo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Gradivo" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Gradivo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_knjiga/" class="md-nav__link">
+        Povzetek gradiva
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_uvod/" class="md-nav__link">
+        Uvod
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_okolje/" class="md-nav__link">
+        Vzpostavitev okolja
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_strojno_ucenje/" class="md-nav__link">
+        Strojno učenje
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_klasifikacija/" class="md-nav__link">
+        Klasifikacija
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_knn/" class="md-nav__link">
+        K najbližjih sosedov
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Kakovost klasifikacije
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Kakovost klasifikacije
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Kazalo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Kazalo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#delitev-podatkov" class="md-nav__link">
+    Delitev podatkov
+  </a>
+  
+    <nav class="md-nav" aria-label="Delitev podatkov">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ucna-in-testna-mnozica" class="md-nav__link">
+    Učna in testna množica
+  </a>
+  
+    <nav class="md-nav" aria-label="Učna in testna množica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delitev-na-ucno-in-testno-mnozico-v-pythonu" class="md-nav__link">
+    Delitev na učno in testno množico v Pythonu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validacijska-mnozica" class="md-nav__link">
+    Validacijska množica
+  </a>
+  
+    <nav class="md-nav" aria-label="Validacijska množica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delitev-na-ucno-validacijsko-in-testno-mnozico-v-pythonu" class="md-nav__link">
+    Delitev na učno, validacijsko in testno množico v Pythonu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navzkrizna-validacija" class="md-nav__link">
+    Navzkrižna validacija
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrike-klasifikacije" class="md-nav__link">
+    Metrike klasifikacije
+  </a>
+  
+    <nav class="md-nav" aria-label="Metrike klasifikacije">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binarna-klasifikacija" class="md-nav__link">
+    Binarna klasifikacija
+  </a>
+  
+    <nav class="md-nav" aria-label="Binarna klasifikacija">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tocnost-klasifikacije-in-delez-napake" class="md-nav__link">
+    Točnost klasifikacije in delež napake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priklic-in-preciznost" class="md-nav__link">
+    Priklic in preciznost
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-mera" class="md-nav__link">
+    F-mera
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#klasifikacija-v-vec-razredov" class="md-nav__link">
+    Klasifikacija v več razredov
+  </a>
+  
+    <nav class="md-nav" aria-label="Klasifikacija v več razredov">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#makro-agregacija-metrik" class="md-nav__link">
+    Makro agregacija metrik
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utezena-agregacija-metrik" class="md-nav__link">
+    Utežena agregacija metrik
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mikro-agregacija-metrik" class="md-nav__link">
+    Mikro agregacija metrik
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agregacija-metrik-v-pythonu" class="md-nav__link">
+    Agregacija metrik v Pythonu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_o_gradivu/" class="md-nav__link">
+        O gradivu
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../avtorja/" class="md-nav__link">
+        Avtorja
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="kakovost-klasifikacije">Kakovost klasifikacije</h1>
+<p>Pri iskanju najprimernejšega klasifikatorja je potrebno evalvirati vsako izmed metod. Množica podatkov, na podlagi katere smo model znanja zgradili, mora vsebovati tudi rešitve (dejanske razrede) instanc, zato lahko pravilnost klasifikacije modela znanja preverimo kar s primerjavo napovedi in dejanskih razredov. Tak pristop ni optimalen, saj lahko vodi v <em>prenasičenje</em> (angl. <em>overfitting</em>). Pri prenasičenju algoritem vrne model, ki uspešno klasificira podane podatke, vendar je kakovost klasificiranja na novih podatkih tipično zelo slaba. Pravimo, da se je model preveč prilegel učnim podatkom in ni dovolj splošen za dano problematiko. Prenasičeni modeli imajo visoko stopnjo <em>variance</em> (angl. <em>variance</em>), kar pomeni, da se preveč prilagajajo majhnemu nihanju in naključnemu šumu v podatkih.</p>
+<div class="admonition info">
+<p class="admonition-title">Prenasičenost</p>
+<p>Če primerjamo prenasičene modele z učenjem ljudi, bi lahko rekli, da pride do prenasičenja, če se ljudje naučimo snov dobesedno, ampak brez pravega razumevanja konceptov. Če bi se učili množenja števil, bi se s prenasičenjem naučili na pamet le rezultate množenja števil do <span class="arithmatex">\(10\)</span> (ker so le ti v učbeniku). Ker pa nismo dojeli koncepta množenja, ne bi poznali rezultata množenja dveh še prej nevidenih števil (primer: <span class="arithmatex">\(12*27\)</span>).</p>
+</div>
+<p>Nasprotje prenasičenju pa je <em>nenasičenost</em> (angl. <em>underfitting</em>). Nenasičeni modeli imajo visoko <em>pristranskost</em> (angl. <em>bias</em>). To pomeni, da je model preveč splošen, saj ne zazna pomembnih relacij ali zakonitosti.</p>
+<figure>
+<p><img alt="Prikaz variance in pristranskosti." src="../../fig/target.png" />
+  </p>
+<figcaption>Prikaz variance in pristranskosti.</figcaption>
+</figure>
+<div class="admonition info">
+<p class="admonition-title">Nenasičenost</p>
+<p>Če se ponovno vrnemo na analogijo učenja množenja dveh števil, bi prišli do nenasičenosti, ko ne bi v celoti dojeli koncepta množenja dveh števil - znali bi množiti dve celoštevilski pozitivni števili, ne pa realnih števil (primer: <span class="arithmatex">\(6,4*1,34\)</span>) ali celo negativnih celih števil (primer: <span class="arithmatex">\(-7 * 21\)</span>).</p>
+</div>
+<p>Praviloma imajo klasifikatorji z visoko pristranskostjo nizko stopnjo variance in obratno. Vedno želimo najti klasifikator s pravim ravnovesjem med pristranskostjo in varianco, a ta meja je arbitrarna in jo določimo sami.</p>
+<h2 id="delitev-podatkov">Delitev podatkov</h2>
+<p>Da se izognemo prekomernemu prileganju podatkom, je potrebno podatke razdeliti na več delov. Na enem izmed delov se klasifikator uči (klasifikacijski algoritem zgradi klasifikacijski model), na drugih podatkih (na takih, ki niso sodelovali pri procesu učenja) pa se preveri kakovost dobljenega modela.</p>
+<div class="admonition info">
+<p class="admonition-title">Učna in testna množica</p>
+<p>Nadaljujmo z analogijo učenja množenja dveh števil. Učno množico dojemimo kot učno gradivo, ki ga uporabljamo za učenje na izpit. Če bi na izpitu dobili enake primere množenja dveh števil, kot smo jih že videli v učnem gradivu, bi preverjali le, če imamo dober spomin, ne pa tudi, če smo dejansko dojeli postopek množenja dveh števil. Tako naj bo izpit sestavljen iz popolnoma novih primerov množenja dveh števil, kar pa v našem postopku ponazorimo z ločeno testno množico. Če je klasifikator dejansko izluščil vzorce iz podatkov, ne bi smel imeti težav pri klasifikaciji novih podatkov. Če se je učne podatke naučil le na pamet, potem pa ne bo dobro klasificiral testnih podatkov (bo padel na izpitu).</p>
+</div>
+<h3 id="ucna-in-testna-mnozica">Učna in testna množica</h3>
+<p>Osnovna razdelitev izvorne množice je z delitvijo na dve podmnožici: <em>učno množico</em> (angl. <em>train dataset</em> ali <em>learn dataset</em>) in <em>testno množico</em> (angl. <em>test dataset</em>) <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. Na učni množici le učimo klasifikatorje, ki pa jih nato testiramo in evalviramo le na testni množici - podatki iz testne množice ne smejo sodelovati pri gradnji klasifikacijskih modelov. Kljub deljenju na učno in testno množico lahko dobimo prenasičen model, a je možnost za to mnogo manjša. Učno množico <span class="arithmatex">\(X\)</span> smo definirali že prej, testna množica <span class="arithmatex">\(X'\)</span> pa je definirana spodaj.</p>
+<div class="arithmatex">\[\begin{align*}
+\label{eq:testna_mnozica}
+\begin{split}
+X' &amp;= \left\lbrace \left( x'_1,y'_1 \right),\left( x'_2,y'_2 \right), \dots ,\left( x'_m,y'_m \right) \right\rbrace \\
+y'_i &amp;\in \left\lbrace razred_1, razred_2, \dots , razred_k \right\rbrace  \\
+m &amp;= \text{število instanc v testni množici} \\
+\end{split}
+\end{align*}\]</div>
+<p>Klasifikacijski model vsaki testni instanci določi razred <span class="arithmatex">\(\hat{y}\)</span>, ki pa ni nujno enak dejanskemu razredu testne instance <span class="arithmatex">\(y'\)</span> - v tem primeru naredi napako pri klasifikaciji instance. Cilj je najti tak klasifikacijski model, ki pravilno klasificira čim več testnih instanc (idealno vse).</p>
+<h4 id="delitev-na-ucno-in-testno-mnozico-v-pythonu">Delitev na učno in testno množico v Pythonu</h4>
+<p>V kodi pa razdelimo podatke na učno in testno množico na sledeč način.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Naložimo podatke</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">podatki</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Razdelimo podatke na učne in testne</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">X_u</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_u</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> 
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                                      <span class="n">podatki</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>                                      <span class="n">train_size</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                                      <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Velikost učne množice: </span><span class="si">{</span><span class="n">X_u</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Velikost učnih razredov: </span><span class="si">{</span><span class="n">y_u</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Velikost testne množice: </span><span class="si">{</span><span class="n">X_t</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Velikost testnih razredov: </span><span class="si">{</span><span class="n">y_t</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Velikost učne množice: (105, 4)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Velikost učnih razredov: (105,)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Velikost testne množice: (45, 4)
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Velikost testnih razredov: (45,)
+</code></pre></div>
+</div>
+<p>S klicem <code>train_test_split</code> podane podatke razdelimo na učno in testno množico na tak način, da zadostimo sledečim kriterijem.</p>
+<ul>
+<li>Če podamo parameter <code>train_size</code> in je vrednost tega celo število, bo učna množica štela prav toliko instanc. Primer: <code>train_size=10</code> pove, da bo učna množica štela točno 10 instanc.</li>
+<li>Če podamo parameter <code>train_size</code> in je vrednost tega realno število med 0 in 1, bo učna množica v velikosti deleža izvorne podane množice. Primer: <code>train_size=0.8</code> pove, da bo učna množica 80 % velikosti izvorne množice.</li>
+<li>Če podamo parameter <code>test_size</code> in je vrednost tega celo število, bo testna množica štela prav toliko instanc. Primer: <code>test_size=10</code> pove, da bo testna množica štela 10 instanc.</li>
+<li>Če podamo parameter <code>test_size</code> in je vrednost tega realno število med 0 in 1, bo testna množica v velikosti deleža izvorne podane množice. Primer: <code>test_size=0.2</code> pove, da bo testna množica 20 % velikosti izvorne množice.</li>
+</ul>
+<p>Klicu <code>train_test_split</code> smo podali tako izvorno množico atributov <code>podatki.data</code>, kakor tudi izvorne razrede <code>podatki.target</code>. S tem zagotovimo, da dobimo vrnjene razdeljene tako atribute instanc (učne <code>X_u</code> in testne <code>X_t</code>), kakor tudi rešitve (učne <code>y_u</code> in testne <code>y_t</code>).</p>
+<h3 id="validacijska-mnozica">Validacijska množica</h3>
+<p>Če se ukvarjamo s specifičnim problemom podatkovnega rudarjenja, se pri gradnji klasifikacijskih modelov srečamo z optimizacijo parametrov klasifikatorja (na primer definiranja števila sosedov <span class="arithmatex">\(k\)</span> pri klasifikatorju <span class="arithmatex">\(k\)</span> najbližjih sosedov). Če parametre prilagajamo glede na rezultate klasifikatorjev na testni množici, delamo napako, saj tako testni podatki sodelujejo pri gradnji optimalnega modela. V tem primeru potrebujemo še <em>validacijsko množico</em> (angl. <em>validation dataset</em>), na podlagi katere preizkušamo in optimiziramo parametre, šele na koncu pa zgrajen model testiramo na testni množici <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
+<p>Slika spodaj prikazuje razdelitev izvorne podatkovne množice na te tri dele: učno množico, validacijsko množico in testno množico. Iz procesa je razvidno, da se nastali modeli znanja najprej preizkusijo na validacijski množici ter se njihova kakovost ovrednoti na tej množici. Šele izbrani (po navadi najboljši) model se uporabi za končno ovrednotenje na testni množici.</p>
+<figure>
+<p><img alt="Delitev množice na učno, validacijsko in testno ter njihova uporaba." src="../../fig/mnozica_delitev.png" width="500" />
+  </p>
+<figcaption>Delitev množice na učno, validacijsko in testno ter njihova uporaba.</figcaption>
+</figure>
+<h4 id="delitev-na-ucno-validacijsko-in-testno-mnozico-v-pythonu">Delitev na učno, validacijsko in testno množico v Pythonu</h4>
+<p>V paketu <code>scikit-learn</code> ne obstaja klic, s katerim bi dosegli enostavno delitev na tri dele, zato je potrebno, da smo nekoliko zviti.</p>
+<p>V prvem klicu <code>train_test_split</code> smo pridobili testno množico <code>X_t</code>, <code>y_t</code> ter <em>začasno učno</em> množico <code>X_u1</code>, <code>y_u1</code>. Razmerje med njima je <span class="arithmatex">\(4:1\)</span> v prid začasne učne množice. V drugem klicu <code>train_test_split</code> pa začasno učno množico razdelimo na dejansko učno <code>X_u</code>, <code>y_u</code> ter validacijsko množico <code>X_v</code>, <code>y_v</code> v razmerju <span class="arithmatex">\(3:1\)</span>. Končno razmerje med učno množico, validacijsko množico in testno množico je tako <span class="arithmatex">\(3:1:1\)</span>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Naložimo podatke</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">podatki</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Razdelimo podatke na &#39;začasno učne&#39; in testne</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">X_u1</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_u1</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">podatki</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>                                        <span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>                                        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># &#39;Začasno učne&#39; podatke razdelimo na &#39;dejanske učne&#39; in validacijske</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">X_u</span><span class="p">,</span> <span class="n">X_v</span><span class="p">,</span> <span class="n">y_u</span><span class="p">,</span> <span class="n">y_v</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_u1</span><span class="p">,</span> <span class="n">y_u1</span><span class="p">,</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>                                      <span class="n">train_size</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>                                      <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div>
+<p>Poglejmo kakšne so množice po razdelitvi.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Velikost učne množice: </span><span class="si">{</span><span class="n">X_u</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Velikost učnih razredov: </span><span class="si">{</span><span class="n">y_u</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Velikost validacijske množice: </span><span class="si">{</span><span class="n">X_v</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Velikost validacijskih razredov: </span><span class="si">{</span><span class="n">y_v</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Velikost testne množice: </span><span class="si">{</span><span class="n">X_t</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Velikost testnih razredov: </span><span class="si">{</span><span class="n">y_t</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Velikost učne množice: (90, 4)
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Velikost učnih razredov: (90,)
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Velikost validacijske množice: (30, 4)
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Velikost validacijskih razredov: (30,)
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>Velikost testne množice: (30, 4)
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Velikost testnih razredov: (30,)
+</code></pre></div>
+</div>
+<h3 id="navzkrizna-validacija">Navzkrižna validacija</h3>
+<p>Pri deljenju podatkov na učno, testno in validacijsko množico pa lahko zgolj po naključju razdelimo podatke v učno, validacijsko in testno množico, tako da se zgodi ena izmed sledečih stvari:</p>
+<ul>
+<li>kakšen vzorec ni prisoten (v celoti ali v dovolj veliki meri) v učni množici in pri učenju klasifikatorja ta ni zajet v modelu;</li>
+<li>se kakšen, v realnosti neprisoten, vzorec pokaže v učni množici in se ta zapiše v model klasifikacije, v realnosti pa ni uporaben.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Navzkrižna validacija</p>
+<p>Nadaljujemo z analogijo učenja množenja števil. Pri učenju matematične naloge (z rešitvami) razdelimo na dva dela: tiste primere, na katerih se učimo (učno množico) in tiste, na katerih se pred izpitom preverimo, če vemo dovolj (validacijska množica; izpit bo pa testna množica). Če smo po naključju razdelili naloge množenja tako, da se učimo le iz najlažjih (recimo le množenje celih pozitivnih števil), določenega naprednega znanja ne bomo osvojili (množenja negativnih ali realnih števil).</p>
+</div>
+<p>Da zmanjšamo možnost za ponesrečeno razdelitev množice, to razdelimo na več načinov - na <span class="arithmatex">\(n\)</span> načinov. Tako iz ene množice dobimo <span class="arithmatex">\(n\)</span> učnih množic in <span class="arithmatex">\(n\)</span> testnih množic. Ta proces imenujemo <em>navzkrižna validacija</em> (angl. <em>cross-validation</em>) in steče tako, da celotno množico razdelimo na <span class="arithmatex">\(n\)</span> delov - na <span class="arithmatex">\(n\)</span> <em>rezov</em> (angl. <em>folds</em>) <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. Vsak rez je enkrat v vlogi testne množice, v vseh ostalih primerih pa je v kombinaciji z ostalimi rezi del učne množice. Posledično je tudi vsaka instanca enkrat v testni množici, v ostalih primerih pa je vedno v učni množici. Sledeča slika prikazuje razdelitev celotne množice na štiri reze za namen navzkrižne validacije.</p>
+<figure>
+<p><img alt="Stratificirana navzkrižna validacija." src="../../fig/navzkrizna_validacija.png" />
+  </p>
+<figcaption>Stratificirana navzkrižna validacija. Vertikalna Y os prikazuje pripadnost instanc bodisi v učno (modra) ali testno (rdeča) množico pri posameznem rezu.</figcaption>
+</figure>
+<p>Pri naključni delitvi na reze se zna zgoditi, da bodo razmerja med razredi različna med rezi. Tega se želimo izogniti, saj lahko nastane situacija, ko so vse instance enega razreda le v enem rezu. Ko bo ta rez v vlogi testnih instanc, klasifikacijski algoritem nima možnosti, da pravilno klasificira instance tega manjšinskega razreda - saj jih nikoli ne vidi v času učenja. S postopkom <em>stratifikacije</em> (angl. <em>stratification</em>) poskrbimo, da se množica premeša na tak način, da so razmerja razredov v vseh rezih kar se da enaka.</p>
+<p>V Pythonu razdelimo množico s stratificirano navzkrižno validacijo sledeče.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Naložimo podatke</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">podatki</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Stratificirana navzkrižna validacija s štirimi rezi</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">rez</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># S tem bomo šteli reze</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="n">instanca</span> <span class="o">=</span> <span class="mi">13</span> <span class="c1"># Pregledovali bomo instanco na mestu 13</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Zanima nas instanca </span><span class="si">{</span><span class="n">instanca</span><span class="si">}</span><span class="s1"> s podatki:&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">instanca</span><span class="p">,:])</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="k">for</span> <span class="n">ucne</span><span class="p">,</span> <span class="n">testne</span> <span class="ow">in</span> <span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">podatki</span><span class="o">.</span><span class="n">target</span><span class="p">):</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="k">if</span> <span class="n">instanca</span> <span class="ow">in</span> <span class="n">ucne</span><span class="p">:</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Instanca </span><span class="si">{</span><span class="n">instanca</span><span class="si">}</span><span class="s1"> je v </span><span class="si">{</span><span class="n">rez</span><span class="si">}</span><span class="s1">. delitvi v učni množici.&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="k">elif</span> <span class="n">instanca</span> <span class="ow">in</span> <span class="n">testne</span><span class="p">:</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Instanca </span><span class="si">{</span><span class="n">instanca</span><span class="si">}</span><span class="s1"> je v </span><span class="si">{</span><span class="n">rez</span><span class="si">}</span><span class="s1">. delitvi v testni množici.&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="n">rez</span> <span class="o">=</span> <span class="n">rez</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Zanima nas instanca 13 s podatki:
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a> sepal length (cm)    4.3 
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a> sepal width (cm)     3.0
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a> petal length (cm)    1.1
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a> petal width (cm)     0.1
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Name: 13, dtype: float64
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a> Instanca 13 je v 1. delitvi v učni množici.
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a> Instanca 13 je v 2. delitvi v testni množici.
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a> Instanca 13 je v 3. delitvi v učni množici.
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a> Instanca 13 je v 4. delitvi v učni množici.
+</code></pre></div>
+</div>
+<p>Z uporabo razreda <code>StratifiedKFold</code> in njegove metode <code>split</code> razdelimo podane podatke na reze. Z vrednostjo <code>n_splits</code> ob inicializaciji podamo, na koliko rezov delimo množico. V <code>for</code> zanki tako na vsaki učni množici naučimo svoj model klasifikacije, ki ga evalviramo na testni množici tistega reza. Tako dobimo <span class="arithmatex">\(n\)</span> klasifikacijskih modelov, vsak se je naučil na nekoliko drugačni učni množici in vsak se je evalviral na popolnoma drugačni testni množici. Iz tega sledi, da dobimo tudi <span class="arithmatex">\(n\)</span> rezultatov klasifikacije na testnih množicah. Da pa ocenimo celokupno kakovost podanega klasifikacijskega algoritma, pa vse rezultate preprosto povprečimo. Sledi poglavje, ki pregleda, kako sploh merimo kakovost klasifikacije, razdeljeno glede na število razredov, v katere model klasifikacije razvršča instance.</p>
+<h2 id="metrike-klasifikacije">Metrike klasifikacije</h2>
+<p>Ko imamo napovedi modela, lahko ovrednotimo oz. evalviramo kakovost te napovedi. To naredimo s pomočjo <em>klasifikacijskih metrik</em> (angl. <em>classification metrics</em>)
+<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup><sup>,</sup><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup><sup>,</sup><sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup><sup>,</sup><sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>. Sledi pregled različnih klasifikacijskih metrik, najprej, ko imamo opravka s klasifikacijo v dva razreda (dvorazredna ali binarna klasifikacija) in nato, ko imamo opravka z več kot dvema razredoma (večrazredna klasifikacija).</p>
+<h3 id="binarna-klasifikacija">Binarna klasifikacija</h3>
+<p>Pri binarnih klasifikatorjih gradimo model za klasifikacijo instanc v dva razreda. Ko imamo model zgrajen, ga ocenimo s pomočjo testnih podatkov in iz rezultatov zgradimo <em>matriko zmede</em> ali <em>kontingenčno tabelo</em> (angl. <em>confusion matrix</em> ali <em>contingency table</em>), ki je prikazana v spodnji tabeli.</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">Napovadan <em>A</em></th>
+<th align="center">Napovedan <em>B</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Dejanski <em>A</em></strong></td>
+<td align="center">TP</td>
+<td align="center">FN</td>
+</tr>
+<tr>
+<td align="left"><strong>Dejanski <em>B</em></strong></td>
+<td align="center">FP</td>
+<td align="center">TN</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Matrika zmede za dva razreda.</figcaption>
+</figure>
+<p>V danem primeru klasificiramo podatke v dva razreda: A in B. Vsaka celica v tabeli prikazuje število instanc. Vrstice matrike kažejo dejansko pripadnost instanc v razrede, stolpci pa povedo razporeditev instanc v razrede s pomočjo klasifikatorja. Enemu razredu pripišemo lastnost pozitivnega razreda, drugemu pa lastnost negativnega razreda. Ta določitev je arbitrarna in je odvisna od problematike reševanja - pravilne določitve ni in bi tudi druga delitev v pozitivne in negativne vrnila prave rezultate.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Podamo dejanske razrede in napovedi klasifikatorja</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">y_dejanski</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">y_napovedan</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Izračunamo matriko zmede</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">mat_zmede</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">mat_zmede</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[[3 0]
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a> [1 2]]
+</code></pre></div>
+</div>
+<p>Klicu <code>confusion_matrix</code> podamo vsaj dve vrednosti: polje dejanskih razredov in polje napovedi. Pomembno je, da so elementi v obeh poljih v enakem vrstnem redu (prvi element v obeh poljih kaže tako dejanski razred kot napoved prvega elementa). S parametrom <code>labels</code> pa podamo vrstni red razredov pri kreaciji matrike zmede - če tega ne podamo, bo vrstni red razredov po abecednem vrstnem redu.</p>
+<p>V primeru iz kode vidimo, da je klasifikacijski model za tri instance razreda A povedal, da so res razreda A; za dve instanci razreda B je povedal, da sta res razreda B; ter za eno instanco razreda B je napačno povedal, da je ta razreda A. Če privzamemo, da je razred A pozitiven, matrika zmede binarne klasifikacije vsebuje štiri vrednosti, ki kažejo količino instanc glede na rezultate klasifikacije:</p>
+<ul>
+<li><strong>TP</strong> - <em>pravilno</em> klasificirane kot <em>pozitivne</em>  (angl. <em>true positives</em>),</li>
+<li><strong>FP</strong> - <em>napačno</em> klasificirane kot <em>pozitivne</em>  (angl. <em>false positives</em>),</li>
+<li><strong>TN</strong> - <em>pravilno</em> klasificirane kot <em>negativne</em>  (angl. <em>true negatives</em>),</li>
+<li><strong>FN</strong> - <em>napačno</em> klasificirane kot <em>negativne</em>  (angl. <em>false negatives</em>).</li>
+</ul>
+<p>Razširimo prejšnji primer z naslednjo kodo, ki nam vrne te štiri vrednosti (deluje le pri binarni klasifikaciji). Klicu metode <code>confusion_matrix</code> dodamo še klic metode <code>ravel</code>, ki dobljeno metriko zloži v enodimenzionalno polje (najprej vse iz prve vrstice, nato vse iz druge vrstice ...).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Izračunamo vrednosti napovedi</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">tp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">tn</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;TP: </span><span class="si">{</span><span class="n">tp</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;TN: </span><span class="si">{</span><span class="n">tn</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;FP: </span><span class="si">{</span><span class="n">fp</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;FN: </span><span class="si">{</span><span class="n">fn</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>TP: 3
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>TN: 2
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>FP: 1
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>FN: 0
+</code></pre></div>
+</div>
+<p>S pomočjo teh štirih vrednosti lahko izračunamo različne <em>metrike klasifikacije</em> (angl. <em>classification metrics</em>) oziroma vrednosti, ki nam povedo, kako kakovosten je klasifikacijski model. Teh metrik je več in vsaka služi svojemu namenu - obstajajo tudi različni pogledi, kaj sploh pomeni <em>kakovosten</em> model znanja.</p>
+<h4 id="tocnost-klasifikacije-in-delez-napake">Točnost klasifikacije in delež napake</h4>
+<p>Prva taka metrika je <em>točnost</em> klasifikacije (angl. <em>accuracy</em>), ki prikazuje, kolikšen deležen instanc je klasificiran v dejanski razred - delež pravilno klasificiranih instanc. Formula točnosti je prikazana v sledeči enačbi in se izračuna kot ulomek števila pravilno klasificiranih instanc (<span class="arithmatex">\(TP + TN\)</span>) deljeno s številom vseh klasificiranih instanc (<span class="arithmatex">\(TP + FP + TN + FN\)</span>). Metriko točnost želimo maksimirati in težimo k temu, da je čim bližje vrednosti 1 <sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup>.</p>
+<div class="arithmatex">\[\begin{equation*}
+    to\check{c}nost = \frac{TP + TN}{TP + FP + TN + FN}
+\end{equation*}\]</div>
+<p>Metrika, ki kaže nasprotno vrednost točnosti, je <em>delež napake</em> (angl. <em>error rate</em>); pravimo tudi, da je obratno sorazmerna kot točnost. Predstavlja delež nepravilno klasificiranih instanc, kar je prikazano v spodnji enačbi. Lahko pa delež napake izračunamo tudi preprosto kot <span class="arithmatex">\(1 - to\check{c}nost\)</span>. Delež napake je metrika, ki jo minimiziramo in katere idealna vrednost je <span class="arithmatex">\(0\)</span>.</p>
+<div class="arithmatex">\[\begin{equation*}
+dele\check{z}\:napake = \frac{FP + FN}{TP + FP + TN + FN}
+\end{equation*}\]</div>
+<p>Prikažimo še izračun točnosti, deleža napake in števila pravilno klasificiranih instanc v Pythonu s klicem <code>accuracy_score</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># Podamo dejanske razrede in napovedi klasifikatorja</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">y_dejanski</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">y_napovedan</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Izračunamo točnost</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">tocnost</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">)</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="n">delez_napake</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">tocnost</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="c1"># Izračunamo število pravilno klasificiranih (TP+TN)</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="n">st_pravilnih</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Točnost: </span><span class="si">{</span><span class="n">tocnost</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Delež napake: </span><span class="si">{</span><span class="n">delez_napake</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Število pravilnih: </span><span class="si">{</span><span class="n">st_pravilnih</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Točnost: 0.8333333333333334
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Delež napake: 0.16666666666666663
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>Število pravilnih: 5
+</code></pre></div>
+</div>
+<h4 id="priklic-in-preciznost">Priklic in preciznost</h4>
+<p>Naslednji dve metriki, ki ju bomo obravnavali skupaj, sta priklic in preciznost. Obe metriki imata vrednost v intervalu <span class="arithmatex">\([0,1]\)</span>, kjer je 0 najslabša vrednost, 1 pa najboljša.</p>
+<p>Metrika <em>priklic</em> (angl. <em>recall</em>)  nam pove delež pozitivnih instanc, ki so pravilno klasificirane v pozitivni razred. Včasih priklic imenujemo tudi <em>senzitivnost</em> (angl. <em>sensitivity</em>) ali <em>delež pravilno klasificiranih pozitivnih instanc</em> (angl. <em>true positive rate</em>). Izračun priklica je prikazan v sledeči enačbi.</p>
+<div class="arithmatex">\[\begin{equation*}
+priklic = \frac{TP}{TP + FN}
+\end{equation*}\]</div>
+<p>Poglejmo si uporabo priklica v Pythonu.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">recall_score</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># Podamo dejanske razrede in napovedi klasifikatorja</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">y_dejanski</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">y_napovedan</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Izračunamo priklic obeh razredov</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="n">priklic_A</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="n">priklic_B</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Priklic A: </span><span class="si">{</span><span class="n">priklic_A</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Priklic B: </span><span class="si">{</span><span class="n">priklic_B</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Priklic A: 1.0
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>Priklic B: 0.6666666666666666
+</code></pre></div>
+</div>
+<p>Podobno kot pri izračunu točnosti, tudi pri klicu metode <code>recall_score</code> podamo najprej polje z dejanskimi razredi, čemur pa sledi polje z napovedanimi razredi. Pri binarni klasifikaciji moramo podati tudi parameter <code>pos_label</code>, s katerim določimo razred, za katerega računamo priklic.</p>
+<div class="admonition info">
+<p class="admonition-title">Priklic oz. senzitivnost testa</p>
+<p>O senzitivnosti (ali občutljivosti) testa v praksi zelo pogosto govorimo, ko imamo opravka s testom, ki ugotavlja prisotnost ali odsotnost določenega obolenja (npr. bolezni, ki jo povzroča virus). Senzitivnost takega testa nam pove kakšen je delež bolnih, ki jih je test našel. Predstavljajmo si primer, ko imamo 100 pacientov, ki so dejansko bolni. Test je za dejansko bolne pokazal, da jih je 80 bolnih, za ostalih 20 pa je test (napačno) trdil, da niso bolni. Tak test ima <span class="arithmatex">\(80 %\)</span> senzitivnost oz. priklic.</p>
+</div>
+<p>Druga metrika je <em>preciznost</em> (angl. <em>precision</em> in nam pove, kolikšen delež instanc, klasificiranih v pozitivni razred, je dejansko pripadnikov pozitivnega razreda. Včasih metriko priklic imenujemo <em>zaupanje</em> (angl. <em>confidence</em>) ali <em>točnost pozitivno klasificiranih pozitivnih instanc</em> (angl. <em>true positive accuracy</em>).</p>
+<div class="arithmatex">\[\begin{equation*}
+preciznost = \frac{TP}{TP + FP}
+\end{equation*}\]</div>
+<p>Sledeča koda prikazuje uporabo klica <code>precision_score</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># Izračunamo preciznost obeh razredov</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">preciznost_A</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">preciznost_B</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Preciznost A: </span><span class="si">{</span><span class="n">preciznost_A</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Preciznost B: </span><span class="si">{</span><span class="n">preciznost_B</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Preciznost A: 0.75
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Preciznost B: 1.0
+</code></pre></div>
+</div>
+<p>Ponovno se vrnimo na primer testa za ugotavljanje določenega obolenja. Imamo 100 pacientov, ki so dejansko bolni. Test je za 80 izmed teh pokazal, da so bolni, za še 10 dodatnih (dejansko zdravih) pacientov pa je prav tako (napačno) pokazal, da so bolni. Tak test ima <span class="arithmatex">\(88,89 %\)</span> preciznosti oz. zaupanja.</p>
+<h4 id="f-mera">F-mera</h4>
+<p>Iz prejšnjih sekcij je razvidno, da obstaja nabor metrik za merjenje kakovosti binarne klasifikacije, od katerih ima vsaka svoj namen. Ko želimo meriti kakovost klasifikacijskega modela v splošnem, pa  uporaba večjega števila metrik ni praktična. V ta namen uporabljamo metriko, imenovano <em>F-mera</em> (angl. <em>F-score</em> ali <em>F-measure</em>), ki združi metriki priklic in preciznost v harmonični sredini, kot je prikazano v enačbi spodaj. Metriki preciznost in priklic nista neposredno povezani in prikazujeta različne informacije. Visoka vrednost ene ne pomeni nujno nizke vrednosti druge, zato stremimo k temu, da bi obe metriki bili dovolj visoki. Prednost F-mere je, da združi obe omenjeni metriki skupaj v eno število, kjer se takoj opazi nizka vrednost katerekoli izmed njiju.</p>
+<div class="arithmatex">\[\begin{align*}
+\begin{split}
+F\text{-}mera_\beta &amp;= (1 + \beta^2) \cdot \frac{preciznost \cdot priklic}{(\beta^2 \cdot preciznost) + priklic}
+\\[.3cm]
+&amp;= \frac{(1 + \beta^2) \cdot TP}{(1 + \beta^2) \cdot TP + \beta^2 \cdot FN + FP}
+\end{split}
+\end{align*}\]</div>
+<p>Ta enačba prikazuje splošno obliko F-mere, kjer lahko posamezno metriko (preciznost ali priklic) utežimo pri končnem izračunu. Vlogo uteži igra vrednost <span class="arithmatex">\(\beta\)</span>, ki je višja pri večji pomembnosti metrike preciznost in nižja, ko damo večji poudarek metriki priklica. Tradicionalna oblika metrike F-mera je, ko sta obe vrednosti enako uteženi in imata uravnoteženo vlogo pri izračunu (ko je <span class="arithmatex">\(\beta=1\)</span>). Največkrat se uporablja prav ta, ki se včasih imenuje tudi F<span class="arithmatex">\(_{1}\)</span>-mera in je prikazana s sledečo enačbo.</p>
+<div class="arithmatex">\[\begin{equation*}
+F_1\text{-}mera = 2 \cdot \frac{preciznost \cdot priklic}{preciznost + priklic}
+\end{equation*}\]</div>
+<p>Če uporabljamo pri izračunu F-mere vrednost <span class="arithmatex">\(\beta\)</span>, ki ni enaka <span class="arithmatex">\(1\)</span>, se to zapiše kot podpisana vrednost (F<span class="arithmatex">\(_2\)</span>-mera ali F<span class="arithmatex">\(_{0,5}\)</span>-mera). Če pa je <span class="arithmatex">\(\beta\)</span> enak vrednosti <span class="arithmatex">\(1\)</span>, lahko podpisano vrednost izpustimo in zapišemo le F-mera.</p>
+<p>Sledeča Python koda prikazuje izračun F-mere z in brez podane <span class="arithmatex">\(\beta\)</span> vrednosti. Koda razširja prejšnje primere, kjer so dejanski in napovedani razredi že definirani.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">fbeta_score</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Izračunamo F-mero in F-meta (s podano beto) razreda A</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">f1_score_A</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">f_beta_score_A</span> <span class="o">=</span> <span class="n">fbeta_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;F1-mera A: </span><span class="si">{</span><span class="n">f1_score_A</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;F-mera (beta=2) A: </span><span class="si">{</span><span class="n">f_beta_score_A</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>F1-mera A: 0.8571428571428571
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>F-mera (beta=2) B: 0.9375
+</code></pre></div>
+</div>
+<h3 id="klasifikacija-v-vec-razredov">Klasifikacija v več razredov</h3>
+<p>V prejšnji sekciji smo naredili pregled metrik za ocenjevanje kakovosti modelov klasifikacije v dva razreda. Mnogokrat pa imajo podatki več možnih razredov, zato evalvacija teh modelov z metrikami, neprilagojenimi za več razredov, postane težavna. Kreacija matrike zmede poteka po enakem postopku kot pri binarni klasifikaciji, kjer v vrstice beležimo dejanske, v stolpce pa napovedane razrede instanc, kot kaže sledeča tabela.</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">Napovadan <em>A</em></th>
+<th align="center">Napovedan <em>B</em></th>
+<th align="center">Napovedan <em>C</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Dejanski <em>A</em></strong></td>
+<td align="center">50</td>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="left"><strong>Dejanski <em>B</em></strong></td>
+<td align="center">4</td>
+<td align="center">20</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="left"><strong>Dejanski <em>C</em></strong></td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">10</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Matrika zmede za več razredov.</figcaption>
+</figure>
+<p>Najpreprostejša metrika za izračun ne glede na število razredov je točnost, saj še vedno velja, da število pravilno klasificiranih instanc delimo s številom vseh instanc. Podobno velja tudi za delež napake, le da število pravilno klasificiranih zamenjamo s številom nepravilno klasificiranih primerkov.</p>
+<p>Težava nastopi pri poimenovanju pozitivnih in negativnih razredov, saj smo prisiljeni oznako pozitivni ali negativni dodeliti več razredom. Vse metrike, ki vsebujejo število pozitivnih ali negativnih instanc, se morajo prilagoditi uporabi klasifikacije v več razredov na sledeč način. Te metrike računamo v več korakih, kjer v vsakem koraku dobi naziv pozitivnega razreda drug razred, ostali pa predstavljajo negativni razred. Končno vrednost metrik dobimo na več načinov: z <em>makro</em> agregacijo, z <em>uteženim povprečenjem</em>, ali z <em>mikro</em> agregacijo <sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup>.</p>
+<h4 id="makro-agregacija-metrik">Makro agregacija metrik</h4>
+<p>Pri <em>makro agregaciji metrik</em> klasifikacije izdelamo več matrik zmede (<span class="arithmatex">\(m\)</span> matrik zmede, če imamo <span class="arithmatex">\(m\)</span> razredov), in sicer tako, da je v vsaki metriki zmede drug razred označen kot pozitivni razred. Za vsako matriko zmede izračunamo izbrano metriko (dobimo <span class="arithmatex">\(m\)</span> metrik klasifikacije). Končno vrednost metrike klasifikacije pa na koncu izračunamo tako, da povprečimo vseh <span class="arithmatex">\(m\)</span> metrik. Sledeče enačbe  prikazujejo makro (<span class="arithmatex">\(Ma\)</span>) izračun nekaterih metrik klasifikacije.</p>
+<div class="arithmatex">\[\begin{align*}
+priklic_{Ma} &amp;= \frac{\sum_{i=1}^{m} \frac{TP_i}{TP_i + FN_i}}{m} = \frac{\sum_{i=1}^{m} priklic_{i}}{m}
+\\[.2cm]
+preciznost_{Ma} &amp;= \frac{\sum_{i=1}^{m} \frac{TP_i}{TP_i + FP_i}}{m} = \frac{\sum_{i=1}^{m} preciznost_{i}}{m}
+\\[.2cm]
+F_1\text{-}mera_{Ma} &amp;= \frac{\sum_{i=1}^{m} F_1\text{-}mera_{i}}{m}
+\end{align*}\]</div>
+<p>Čeprav se metrika točnost izračuna za <em>m</em> razredov enako kot za binarni problem klasifikacije, pa lahko izračunamo metriko <em>povprečna točnost</em> (angl. <em>average class accuracy</em>). Ta metrika izračuna najprej točnost za vsak posamezni razred, nato pa povpreči izračunane vrednosti. Po enakem postopku izračunamo tudi <em>povprečno stopnjo napake</em> (angl. <em>average class error rate</em>), le da povprečimo deleže napak razredov.</p>
+<div class="arithmatex">\[\begin{align*}
+povpre\check{c}na\:to\check{c}nost &amp;= \frac{\sum_{i=1}^{m} \frac{TP_i+TN_i}{TP_i + FP_i + TN_i + FN_i}}{m}
+\\[.2cm]
+povpre\check{c}en\:dele\check{z}\:napake &amp;= \frac{\sum_{i=1}^{m} \frac{FP_i+FN_i}{TP_i + FP_i + TN_i + FN_i}}{m}
+\end{align*}\]</div>
+<h4 id="utezena-agregacija-metrik">Utežena agregacija metrik</h4>
+<p>Preprosto povprečenje metrik vsakega razreda največkrat ni smiselno. Ko imamo neuravnoteženo množico (tj. množico, ko je razmerje med razredi zelo neenakomerno - čez <span class="arithmatex">\(8:1\)</span>), povprečenje kakovosti klasifikacije instanc pogostega razreda in kakovosti instanc redkih razredov ni smiselno. Namreč, več instanc imamo, več možnosti ima klasifikacijski algoritem, da izlušči vzorce, ki so značilni za instance tega razreda. To privede do klasifikacijskih modelov, ki delujejo mnogo boljše pri klasifikaciji instanc bolj pogostega razreda v primerjavi s klasifikacijo instanc redkih razredov. Če kakovost klasifikacije povprečimo (kot je to pri makro agregaciji), kakovost klasifikacije vseh razredov enakomerno prispeva h končni metriki. To je odlično, če želimo večji poudarek na kakovosti manjšinskih instanc. Če pa ne želimo, da instance v manjšini prevzamejo neenakomerno večjo vlogo pri ocenjevanju kakovosti, pa lahko posamezne metrike pred povprečenjem utežimo.</p>
+<p>Pri uteževanju metriko posameznega razreda <span class="arithmatex">\(i\)</span> zmnožimo z deležem instanc <span class="arithmatex">\(u_i\)</span> razreda <span class="arithmatex">\(i\)</span>, zmnožene metrike pa nato seštejemo v skupno mero. Delež razreda <span class="arithmatex">\(u_i\)</span> je preprost odstotek instanc tega razreda <span class="arithmatex">\(i\)</span> v testni množici.</p>
+<div class="arithmatex">\[\begin{align*}
+priklic_{Ua} &amp;= \sum_{i=1}^{m} u_i \cdot \frac{TP_i}{TP_i + FN_i} = \sum_{i=1}^{m} u_i \cdot priklic_{i}
+\\[.2cm]
+preciznost_{Ua} &amp;= \sum_{i=1}^{m} u_i \cdot \frac{TP_i}{TP_i + FP_i} = \sum_{i=1}^{m} u_i \cdot preciznost_{i}
+\\[.2cm]
+F_1\text{-}mera_{Ua} &amp;= \sum_{i=1}^{m}  u_i \cdot F_1\text{-}mera_{i}
+\end{align*}\]</div>
+<h4 id="mikro-agregacija-metrik">Mikro agregacija metrik</h4>
+<p>Pri <em>mikro agregaciji metrik</em> začnemo podobno kot pri makro agregaciji; zgradimo <span class="arithmatex">\(m\)</span> matrik zmede, nadaljnji postopek pa je drugačen. Namesto povprečenja različnih metrik seštejemo posamezne vrednosti iz matrik zmede. Primer: vse <span class="arithmatex">\(TP_i\)</span> seštejemo skupaj, da dobimo <span class="arithmatex">\(TP_{Mi}\)</span>, in tega vstavimo v enačbo za izračun mikro agregiranih metrik. Enačbe spodaj prikazujejo način izračuna posameznih metrik na mikro (<span class="arithmatex">\(Mi\)</span>) način.</p>
+<div class="arithmatex">\[\begin{align*}
+priklic_{Mi} &amp;= \frac{\sum_{i=1}^{m} TP_i}{\sum_{i=1}^{m} (TP_i + FN_i)}
+\\[.2cm]
+preciznost_{Mi} &amp;= \frac{\sum_{i=1}^{m} TP_i}{\sum_{i=1}^{m} (TP_i + FP_i)}
+\\[.2cm]
+F_1\text{-}mera_{Mi} &amp;= 2 \cdot \frac{preciznost_{Mi} \cdot priklic_{Mi}}{preciznost_{Mi} + priklic_{Mi}}
+\end{align*}\]</div>
+<p>Posebnih mikro agregacij točnosti in deleža napake ni, saj v tem primeru dobimo že prej definirano točnost in delež napake.</p>
+<h4 id="agregacija-metrik-v-pythonu">Agregacija metrik v Pythonu</h4>
+<p>Z uporabo knjižnice <code>scikit-learn</code> in že do sedaj predstavljenih metod <code>accuracy_score</code>, <code>precision_score</code>, <code>recall_score</code> in <code>f1_score</code> enostavno agregiramo metrike vseh razredov v eno vrednost. Pri agregaciji nam služi parameter teh metod <code>average</code>, s katerim podamo način agregacije.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1"># Izračunamo preciznost z makro agregacijo</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">preciznost_makro</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="c1"># Izračunamo utežen priklic</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="n">priklic_utezen</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="c1"># Izračunamo mikro F-mero</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="n">f_mera_mikro</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="c1"># Izračunamo ločeno preciznost za vsak razred</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="n">preciznost_vseh</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_dejanski</span><span class="p">,</span> <span class="n">y_napovedan</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Makro preciznost: </span><span class="si">{</span><span class="n">preciznost_makro</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Utežen priklic: </span><span class="si">{</span><span class="n">priklic_utezen</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mikro F-mera: </span><span class="si">{</span><span class="n">f_mera_mikro</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Preciznost vseh razredov: </span><span class="si">{</span><span class="n">preciznost_vseh</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Makro preciznost: 0.875
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Utežen priklic: 0.8333333333333334
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>Mikro F-mera: 0.8333333333333334
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>Preciznost vseh razredov: [0.75 1.  ]
+</code></pre></div>
+</div>
+<p>Vrednost parametra <code>average</code> določa način agregacije:</p>
+<ul>
+<li><code>'macro'</code> se uporabi za makro agregacijo.</li>
+<li><code>'weighted'</code> se uporabi za uteženo agregacijo, kjer so uteži sestavljene iz razmerja razredov v podani testni množici.</li>
+<li><code>'micro'</code> se uporabi za mikro agregacijo.</li>
+<li><code>None</code> se uporabi, ko želimo ločen izpis metrike za vsak razred posebej, brez agregacije.</li>
+</ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Lever, J., 2016. Classification evaluation: It is important to understand both what a classification metric expresses and what it hides. Nature Methods, 13(8), pp.603-605.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Guyon, I., 1997. A scaling law for the validation-set training-set size ratio. AT&amp;T Bell Laboratories, 1(11).&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Schaffer, C., 1993. Selecting a classification method by cross-validation. Machine Learning, 13(1), pp.135-143.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Hossin, M. and Sulaiman, M.N., 2015. A review on evaluation metrics for data classification evaluations. International journal of data mining &amp; knowledge management process, 5(2), p.1.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Powers, D.M., 2020. Evaluation: from precision, recall and F-measure to ROC, informedness, markedness and correlation. arXiv preprint arXiv:2010.16061.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>Sokolova, M., Japkowicz, N. and Szpakowicz, S., 2006, December. Beyond accuracy, F-score and ROC: a family of discriminant measures for performance evaluation. In Australasian joint conference on artificial intelligence (pp. 1015-1021). Springer, Berlin, Heidelberg.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>Sokolova, M. and Lapalme, G., 2009. A systematic analysis of performance measures for classification tasks. Information processing &amp; management, 45(4), pp.427-437.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>Demšar, J., 2006. Statistical comparisons of classifiers over multiple data sets. The Journal of Machine Learning Research, 7, pp.1-30.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>Jurman, G. and Furlanello, C., 2010. A unifying view for performance measures in multi-class prediction. arXiv preprint arXiv:1008.2908.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../05_knn/" class="md-footer__link md-footer__link--prev" aria-label="Prejšnja stran: K najbližjih sosedov" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Prejšnja stran
+              </span>
+              K najbližjih sosedov
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../09_o_gradivu/" class="md-footer__link md-footer__link--next" aria-label="Naslednja stran: O gradivu" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Naslednja stran
+              </span>
+              O gradivu
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Vse pravice pridržane &copy; 2022 Sašo Karakatič, Iztok Fister ml.
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:saso.karakatic@um.si" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/sasokarakatic/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.suggest", "search.highlight", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "instant"], "translations": {"clipboard.copy": "Kopiraj v odlo\u017ei\u0161\u010de", "clipboard.copied": "Kopirano v odlo\u017ei\u0161\u010de", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "I\u0161\u010di", "search.result.placeholder": "Vpi\u0161i iskalni niz", "search.result.none": "Ni zadetkov", "search.result.one": "1 zadetek", "search.result.other": "# zadetkov", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

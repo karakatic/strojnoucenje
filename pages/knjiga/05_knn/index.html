@@ -1,0 +1,1960 @@
+
+<!doctype html>
+<html lang="sl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Pomoč pri uporabi strojnega učenja v Pythonu.">
+      
+      
+        <meta name="author" content="Sašo Karakatič">
+      
+      
+        <link rel="canonical" href="https://www.strojnoucenje.si/pages/knjiga/05_knn/">
+      
+      <link rel="icon" href="../../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
+    
+    
+      
+        <title>K najbližjih sosedov - Strojno učenje</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2b4465f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#k-najblizjih-sosedov" class="md-skip">
+          Skoči na vsebino
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Strojno učenje" class="md-header__button md-logo" aria-label="Strojno učenje" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Strojno učenje
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              K najbližjih sosedov
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Preklopi na temno"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Preklopi na temno" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Preklopi na svetlo"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Preklopi na svetlo" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Išči" placeholder="Išči" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Domov
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../00_knjiga/" class="md-tabs__link md-tabs__link--active">
+        Gradivo
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../avtorja/" class="md-tabs__link">
+      Avtorja
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Strojno učenje" class="md-nav__button md-logo" aria-label="Strojno učenje" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    Strojno učenje
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Domov
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Gradivo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Gradivo" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Gradivo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_knjiga/" class="md-nav__link">
+        Povzetek gradiva
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_uvod/" class="md-nav__link">
+        Uvod
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_okolje/" class="md-nav__link">
+        Vzpostavitev okolja
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_strojno_ucenje/" class="md-nav__link">
+        Strojno učenje
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_klasifikacija/" class="md-nav__link">
+        Klasifikacija
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          K najbližjih sosedov
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        K najbližjih sosedov
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Kazalo">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Kazalo
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#racunanje-razdalj" class="md-nav__link">
+    Računanje razdalj
+  </a>
+  
+    <nav class="md-nav" aria-label="Računanje razdalj">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indikacijski-atributi" class="md-nav__link">
+    Indikacijski atributi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kreacija-indikacijskih-atributov-v-pythonu" class="md-nav__link">
+    Kreacija indikacijskih atributov v Pythonu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skupna-razdalja" class="md-nav__link">
+    Skupna razdalja
+  </a>
+  
+    <nav class="md-nav" aria-label="Skupna razdalja">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evklidska-razdalja" class="md-nav__link">
+    Evklidska razdalja
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mahattanska-razdalja" class="md-nav__link">
+    Mahattanska razdalja
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kosinusna-razdalja" class="md-nav__link">
+    Kosinusna razdalja
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klasifikator-k-najblizjih-sosedov" class="md-nav__link">
+    Klasifikator k najbližjih sosedov
+  </a>
+  
+    <nav class="md-nav" aria-label="Klasifikator k najbližjih sosedov">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delovanje-k-najblizjih-sosedov" class="md-nav__link">
+    Delovanje k najbližjih sosedov
+  </a>
+  
+    <nav class="md-nav" aria-label="Delovanje k najbližjih sosedov">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primer-klasifikacije-pacientov" class="md-nav__link">
+    Primer klasifikacije pacientov
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standardizacija-podatkov" class="md-nav__link">
+    Standardizacija podatkov
+  </a>
+  
+    <nav class="md-nav" aria-label="Standardizacija podatkov">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standardizacija-v-pythonu" class="md-nav__link">
+    Standardizacija v Pythonu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dolocitev-razreda-podane-instance" class="md-nav__link">
+    Določitev razreda podane instance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uporaba-k-najblizjih-sosedov-v-pythonu" class="md-nav__link">
+    Uporaba k najbližjih sosedov v Pythonu
+  </a>
+  
+    <nav class="md-nav" aria-label="Uporaba k najbližjih sosedov v Pythonu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vizualizacija-podatkov" class="md-nav__link">
+    Vizualizacija podatkov
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucenje-in-uporaba-modela-znanja" class="md-nav__link">
+    Učenje in uporaba modela znanja
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpliv-nastavitev-na-rezultate" class="md-nav__link">
+    Vpliv nastavitev na rezultate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpliv-standardizacije-podatkov-na-rezultate" class="md-nav__link">
+    Vpliv standardizacije podatkov na rezultate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enovit-primer-klasifikacije-vec-instanc" class="md-nav__link">
+    Enovit primer klasifikacije več instanc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_kakovost_klasifikacije/" class="md-nav__link">
+        Kakovost klasifikacije
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_o_gradivu/" class="md-nav__link">
+        O gradivu
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../avtorja/" class="md-nav__link">
+        Avtorja
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="k-najblizjih-sosedov">K najbližjih sosedov</h1>
+<p>Začeli bomo s pregledom delovanja klasifikacije na podlagi podobnosti med instancami. Prvo vprašanje, ki se nam poraja, je, kako sploh določimo podobnost med instancami? Oziroma povedano drugače, kdaj sta si dve instanci podobni in kdaj ne? Intuitivno si ljudje naredimo prvi vtis glede na podobnost z že poznanimi koncepti. Vidimo nov avto? Ta je podoben našemu avtu doma - torej je najverjetneje hiter, porabi veliko goriva in ni primeren za vožnjo po slabi cesti.</p>
+<figure>
+<p><img alt="Izbira novih čevljev s primerjavo." src="../../fig/cevlji.png" />
+  </p>
+<figcaption>Izbira novih čevljev s primerjavo.</figcaption>
+</figure>
+<p>Kaj pa, če izbiramo nove zimske čevlje izmed nabora čevljev, ki jih trgovina ponuja? Vse čevlje v ponudbi primerjamo na podlagi izkušenj z zimskimi čevlji, ki smo si jih lastili v preteklosti. Želimo si nove čevlje, ki so čim bolj podobni prejšnjim, na žalost obrabljenim. Všeč nam je bila njihova barva, prav tako nas niso žulili pri daljši hoji, na ledu nam nikoli ni drselo pa tudi za na fakulteto so bili primerni. Izmed vseh ponujenih čevljev najdemo najbližje našim prejšnjim - to ljudje naredimo intuitivno, hitro in brez nepotrebnih kalkulacij.</p>
+<p>Kako pa pripravimo računalnik, da bo videl podobnosti med predstavljenimi koncepti? Z izračunom razdalje med dvema konceptoma. Bolj sta si dve stvari podobni, manjša je razdalja med njima, ter obratno - manj sta si dve stvari podobni, večja je razdalja med njima.</p>
+<h2 id="racunanje-razdalj">Računanje razdalj</h2>
+<p>Poglejmo si primer primerjave dveh čevljev.</p>
+<figure>
+<p><img alt="Primerjava dveh čevljev." src="../../fig/cevlja.png" />
+  </p>
+<figcaption>Primerjava dveh čevljev.</figcaption>
+</figure>
+<p>Ta primer preslikajmo v tabelo, kjer je prva vrstica namenjena atributom prvih čevljev, druga vrstica je namenjena atributom drugih čevljev, v tretji vrstici pa so razlike med njima.</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">Višina</th>
+<th align="center">Teža</th>
+<th align="center">Vodoodporni</th>
+<th align="center">Barva</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Čevlji A</td>
+<td align="center">17</td>
+<td align="center">231</td>
+<td align="center">da</td>
+<td align="center">rjavi</td>
+</tr>
+<tr>
+<td align="left">Čevlji B</td>
+<td align="center">9</td>
+<td align="center">119</td>
+<td align="center">ne</td>
+<td align="center">modri</td>
+</tr>
+<tr>
+<td align="left">Razlika</td>
+<td align="center">8</td>
+<td align="center">112</td>
+<td align="center">?</td>
+<td align="center">?</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Primer računanja razdalje med dvema čevljema.</figcaption>
+</figure>
+<p>Razlike med številskimi atributi je enostavno izračunati; preprosto vzamemo vrednost številskih atributov prve instance in odštejemo vrednost atributov druge instance. V primeru kategoričnih atributov pa ni možno določiti, kateri kategoriji sta si bližji in kateri sta si dlje. Ko moramo izračunati razdaljo med dvema kategorijama, preprosto uporabimo naslednje pravilo:</p>
+<ul>
+<li>Če sta kategoriji enaki, je razdalja med njima 0.</li>
+<li>Če sta kategoriji različni, je razdalja med njima 1.</li>
+</ul>
+<p>Knjižnica <code>scikit-learn</code> pa ne razlikuje med tipi spremenljivk - vse spremenljivke obravnava kot številske oziroma razmernostne. Za naši dve kategorični spremenljivki vodoodpornosti in barve čevljev to predstavlja težavo, saj v trenutni obliki nista zapisani v obliki števil.</p>
+<h4 id="indikacijski-atributi">Indikacijski atributi</h4>
+<p>Za uporabo podatkov s knjižnico <code>scikit-learn</code> je podatke potrebno prilagoditi tako, da kategorične atribute spremenimo v številske.</p>
+<p>Napačen pristop bi bil določitev števila vsaki kategoriji. Pri barvi čevljev bi tako barva <em>črna</em> postala število 0, barva <em>modra</em> število 1, <em>barva</em> rjava število 2, in tako naprej. Ta pristop še vedno ni pravilen, saj algoritmi strojnega učenja največkrat operirajo s takimi vrednostmi - naključna določitev številk kategorijam pa bi izračune pokvarila. Pri računanju razdalj bi tako razdalja med črnimi in rjavimi čevlji bila 2, med črnimi in modrimi pa le 1. To je nesmiselno, saj barv ne moremo postaviti v vrstni red.</p>
+<p>Posledično se transformacije kategoričnih atributov v številske atribute lotimo s pomočjo kreacije <em>indikacijskih atributov</em> (angl. <em>dummy attribute</em>). Iz enega kategoričnega atributa tako nastane več novih številskih atributov. Za vsako kategorijo enega kategoričnega atributa tako nastane svoj številski atribut. Če so čevlji lahko treh različnih barv (črni, modri, rjavi), potem nastanejo trije novi atributi: <em>Barva (črni)</em>, <em>Barva (modri)</em> in <em>Barva (rjavi)</em>. Indikacijski atribut ima lahko le dve vrednosti:</p>
+<ul>
+<li>vrednost 0, če kategorija <strong>ne drži</strong> za instanco ter</li>
+<li>vrednost 1, če kategorija <strong>drži</strong> za instanco.</li>
+</ul>
+<p>Poglejmo si tabelo podatkov obeh čevljev po transformaciji kategoričnih atributov v indikacijske atribute. Zdaj je primerjava mnogo bolj smiselna. Prav tako je opazno, da obstaja razlika tako v vodoodpornosti čevljev, kakor v barvi.</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">Višina</th>
+<th align="center">Teža</th>
+<th align="right">Vod.</th>
+<th align="right">Vod.</th>
+<th align="right">Barva</th>
+<th align="right">Barva</th>
+<th align="right">Barva</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right"><em>(da)</em></td>
+<td align="right"><em>(ne)</em></td>
+<td align="right"><em>(modri)</em></td>
+<td align="right"><em>(rjavi)</em></td>
+<td align="right"><em>(črni)</em></td>
+</tr>
+<tr>
+<td align="left">Čevlji A</td>
+<td align="center">17</td>
+<td align="center">231</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left">Čevlji B</td>
+<td align="center">9</td>
+<td align="center">119</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">Razlika</td>
+<td align="center">8</td>
+<td align="center">112</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">0</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Primer računanja razdalje z indikacijskimi atributi.</figcaption>
+</figure>
+<h3 id="kreacija-indikacijskih-atributov-v-pythonu">Kreacija indikacijskih atributov v Pythonu</h3>
+<p>Najenostavnejši postopek kreacije indikacijskih atributov je s pomočjo <code>pandas</code> knjižnice. Struktura podatkov <code>DataFrame</code> ima že zabeležen tip vsakega stolpca, kar poenostavi avtomatsko transformacijo kategoričnih atributov v indikacijske. Sledeča koda prikazuje kreacijo podatkov, iz katerih se bodo kreirali indikacijski atributi.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">cevljiA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">231</span><span class="p">,</span> <span class="s1">&#39;da&#39;</span><span class="p">,</span> <span class="s1">&#39;rjavi&#39;</span><span class="p">]</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">cevljiB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">119</span><span class="p">,</span> <span class="s1">&#39;ne&#39;</span><span class="p">,</span> <span class="s1">&#39;modri&#39;</span><span class="p">]</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">cevljiC</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">143</span><span class="p">,</span> <span class="s1">&#39;ne&#39;</span><span class="p">,</span> <span class="s1">&#39;črni&#39;</span><span class="p">]</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">cevljiD</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="s1">&#39;ne&#39;</span><span class="p">,</span> <span class="s1">&#39;rjavi&#39;</span><span class="p">]</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">cevljiE</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="s1">&#39;da&#39;</span><span class="p">,</span> <span class="s1">&#39;modri&#39;</span><span class="p">]</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">cevljiF</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">245</span><span class="p">,</span> <span class="s1">&#39;da&#39;</span><span class="p">,</span> <span class="s1">&#39;črni&#39;</span><span class="p">]</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Z združitvijo instanc ustvarimo DataFrame</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">podatki</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">cevljiA</span><span class="p">,</span> <span class="n">cevljiB</span><span class="p">,</span> <span class="n">cevljiC</span><span class="p">,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                        <span class="n">cevljiD</span><span class="p">,</span> <span class="n">cevljiE</span><span class="p">,</span> <span class="n">cevljiF</span><span class="p">],</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                       <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Višina&#39;</span><span class="p">,</span> <span class="s1">&#39;Teža&#39;</span><span class="p">,</span> 
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>                                <span class="s1">&#39;Vodood&#39;</span><span class="p">,</span> <span class="s1">&#39;Barva&#39;</span><span class="p">],</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>                       <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cevlji A&#39;</span><span class="p">,</span> <span class="s1">&#39;cevlji B&#39;</span><span class="p">,</span> 
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>                              <span class="s1">&#39;cevlji C&#39;</span><span class="p">,</span> <span class="s1">&#39;cevlji D&#39;</span><span class="p">,</span> 
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>                              <span class="s1">&#39;cevlji E&#39;</span><span class="p">,</span> <span class="s1">&#39;cevlji F&#39;</span><span class="p">])</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nb">print</span><span class="p">(</span><span class="n">podatki</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>          Višina  Teža  Vodood  Barva
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cevlji A  17      231   da      rjavi
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>cevlji B  9       119   ne      modri
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>cevlji C  12      143   ne      črni
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>cevlji D  8       112   ne      rjavi
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>cevlji E  11      198   da      modri
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>cevlji F  15      245   da      črni
+</code></pre></div>
+</div>
+<p>S pregledom vrednosti <code>dtypes</code> podatkov lahko ugotovimo kakšnega tipa je posamezen atribut (stolpec).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">podatki</span><span class="o">.</span><span class="n">dtypes</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Višina  int64
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Teža    int64
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Vodood  object
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Barva   object
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>dtype:  object
+</code></pre></div>
+</div>
+<p>Atributa <code>Vodood</code> in <code>Barva</code> sta tipa <code>object</code>, kar pomeni, da sta obravnavana kot kategorični spremenljivki. Pred uporabo teh podatkov v procesu strojnega učenja s knjižnico <code>scikit-learn</code> je potrebno spremeniti vse atribute <code>object</code> v številske. Knjižnica <code>pandas</code> ponuja metodo <code>get_dummies()</code>, ki pregleda podane podatke tipa <code>DataFrame</code> in vse atribute tipa <code>object</code> spremeni v indikacijske atribute. Izvorna spremenljivka se ne spremeni, temveč se podatki z indikacijskimi atributi vrnejo kot rezultat metode.</p>
+<p>Pregled tipa atributov pokaže, da so zdaj vsi atributi številskega tipa, s čimer zadostimo uporabi v kombinaciji s <code>scikit-learn</code> knjižnico.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Vse kategorične (object) atribute spremenimo v indikacijske</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">podatki_z_indikacijskimi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">podatki</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">podatki_z_indikacijskimi</span><span class="o">.</span><span class="n">dtypes</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Višina       int64
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Teža         int64
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Vodood_da    uint8
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Vodood_ne    uint8
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Barva_modri  uint8
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>Barva_rjavi  uint8
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>Barva_črni   uint8
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>dtype:       object
+</code></pre></div>
+</div>
+<p>Pregled vsebine novih podatkov prikaže novonastale indikacijske atribute.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">podatki_z_indikacijskimi</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>          Višina  Teža  Vodood_da  Vodovod_ne Barva_modri  Barva_rjavi  Barva_črni
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>cevlji A  17      231   1          0          0            1            0
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>cevlji B  9       119   0          1          1            0            0
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>cevlji C  12      143   0          1          0            0            1
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>cevlji D  8       112   0          1          0            1            0
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>cevlji E  11      198   1          0          1            0            0
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>cevlji F  15      245   1          0          0            0            1
+</code></pre></div>
+</div>
+<h2 id="skupna-razdalja">Skupna razdalja</h2>
+<p>Pri vmesnih izračunih razdalj še vedno ne pridemo do končne skupne razdalje med dvema instancama. Za agregacijo vmesnih razdalj v eno mero razdalje pa lahko izberemo več različnih pristopov. Sledeča slika prikazuje več vrst razdalj, ki bodo opisane v sledečih sekcijah.</p>
+<figure>
+<p><img alt="Različne razdalje med dvema točkama." src="../../fig/razdalje.png" />
+  </p>
+<figcaption>Različne razdalje med dvema točkama.</figcaption>
+</figure>
+<h3 id="evklidska-razdalja">Evklidska razdalja</h3>
+<p>Evklidsko razdaljo med dvema točkama v ravnini je definiral matematik Evklid. Deluje po principu Pitagorovega izreka, kjer se razdalja med dvema točkama oz. instancama (<span class="arithmatex">\(x_1\)</span> in <span class="arithmatex">\(x_2\)</span>) izračuna kot koren vsote kvadratov vseh dimenzij.</p>
+<div class="arithmatex">\[\begin{align*}
+    \begin{split}
+         d_E\left(x_1,x_2\right)&amp;=\sqrt{\left( x_1^{(1)}-x_2^{(1)}\right)^2 + \left( x_1^{(2)}-x_2^{(2)}\right)^2 + \dots \left( x_1^{(l)}-x_2^{(l)}\right)^2} 
+        \\
+         &amp;=\sqrt{\sum \nolimits _{i=1}^{l}  \left( x_1^{(i)}-x_2^{(i)}\right)^2 } 
+    \end{split}
+\end{align*}\]</div>
+<p>kjer je <span class="arithmatex">\(l\)</span> število atributov posamezne instance.</p>
+<h3 id="mahattanska-razdalja">Mahattanska razdalja</h3>
+<p>Zelo pogosto pa nas zanima manhattanska razdalja, ki si zgled za računanje razdalje med dvema točkama vzame po postavitvi cest na otoku Manhattan, kot kaže slika spodaj. V večjem delu otoka so ceste postavljene vzdolž otoka (avenije) in prečno po otoku (ulice). Pri računanju razdalje od ene točke do druge je tako potrebno v obzir vzeti dolžine vseh cest med dvema točkama, pri tem pa ni možno krajšati poti z diagonalami.</p>
+<figure>
+<p><img alt="Razdalje na Manhattnu." src="../../fig/manhattan.png" />
+  </p>
+<figcaption>Razdalje na Manhattnu.</figcaption>
+</figure>
+<p>Pri izračunu manhattanske razdalje tako ni najkrajša pot predstavljena kot diagonalna in najkrajša daljica med dvema instancama, ampak kot vsota vseh daljic, ki poteka vzdolž vseh osi. </p>
+<div class="arithmatex">\[\begin{align*}
+    \begin{split}
+         d_M\left(x_1,x_2\right)&amp;=\left| x_1^{(1)}-x_2^{(1)}\right| + \left| x_1^{(2)}-x_2^{(2)}\right| + \dots \left| x_1^{(l)}-x_2^{(l)}\right| 
+    \\
+         &amp;=\sum \nolimits _{i=1}^{l}  \left| x_1^{(i)}-x_2^{(i)}\right|
+    \end{split}
+\end{align*}\]</div>
+<h3 id="kosinusna-razdalja">Kosinusna razdalja</h3>
+<p>Z manhattansko in evklidsko razdaljo pa pridemo do težav, ko imamo meritve, ki lahko imajo tako negativne kot pozitivne vrednosti. Primer take meritve bi bil letni zaslužek podjetja, saj je ta lahko tudi negativen (podjetje je na letni ravni imelo izgubo). Za primer vzemimo tri podjetja in njihove letne zaslužke ter spremembe deleža pokritega trga od prejšnjega leta, kot je na sliki.</p>
+<figure>
+<p><img alt="Primerjava evklidske, manhattanske in kosinusne razdalje." src="../../fig/kos.png" />
+  </p>
+<figcaption>Primerjava evklidske, manhattanske in kosinusne razdalje.</figcaption>
+</figure>
+<p>Tako evklidska kakor tudi manhattanska razdalja pravita, da sta podjetji A in C bližje kot pa podjetji A in B.</p>
+<div class="arithmatex">\[\begin{align*}
+    \begin{split}
+        d_E\left(A,B\right)&amp;&gt;d_E\left(A,C\right)\\
+        d_M\left(A,B\right)&amp;&gt;d_M\left(A,C\right)\\
+        d_C\left(A,B\right)&amp;&lt;d_M\left(A,C\right)
+    \end{split}
+\end{align*}\]</div>
+<p>To je v nasprotju z našo intuicijo: podjetje C je namreč imelo izgubo v letnem prihodku in negativno spremembo pokritosti trga. Podjetji A in B pa sta imeli tako dobiček, kakor tudi se je njun delež pokritega trga povečal v primerjavi z lanskim letom.</p>
+<p>V takih situacijah sta evklidska in manhattanska razdalja neprimerni ter se uporabi kosinusna razdalja. Pri kosinusni razdalji je pomembna (1) smer vektorja posamezne instance ter (2) njegova dolžina. Razliko med smerjo dveh vektorjev merimo s kotom <span class="arithmatex">\(\alpha\)</span> med vektorjema (instancama), ta pa je proporcionalna kosinusu kotov. Za instanci <span class="arithmatex">\(x_1\)</span> in <span class="arithmatex">\(x_2\)</span> velja sledeč izračun kosinusne razdalje.</p>
+<div class="arithmatex">\[\begin{align*}
+    \begin{split}
+         d_C\left(x_1,x_2\right)&amp;=1- \frac { x_1 \cdot x_2}{||x_1|| \cdot ||x_2||}
+    \\
+         &amp;=1-\frac { \sum _{i=1}^{l} x_1^{(i)} *  x_2^{(i)}}{\sqrt{\sum _{i=1}^{l} x_1^{i~2}} * \sqrt{\sum _{i=1}^{l} x_2^{i~2}}}
+    \end{split}
+\end{align*}\]</div>
+<p>Izbira načina izračuna razdalje je odvisna od problema. Najbolj intuitivna je vsekakor evklidska razdalja. Večji je nabor atributov <span class="arithmatex">\(l\)</span>, bolj je primerna manhattanska razdalja v primerjavi z evklidsko <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. Kosinusna razdalja pa je primerna, ko nas bolj kot razdalje zanimajo podobnosti med instancami.</p>
+<h2 id="klasifikator-k-najblizjih-sosedov">Klasifikator <em>k</em> najbližjih sosedov</h2>
+<p>Pri nekaterih algoritmih klasifikacije ne nastane učni model, ampak se klasifikator odloča vsakokrat ob pogledu v že klasificirane instance. Taka vrsta učenja se imenuje <em>leno učenje</em> in algoritem klasifikacije <em>k</em> najbližjih sosedov (angl. <em>k nearest neighbors</em>) je tipični primer <em>lenega</em> algoritma učenja. Sledi pregled delovanja tega algoritma <em>k</em> najbližjih sosedov.</p>
+<h3 id="delovanje-k-najblizjih-sosedov">Delovanje <em>k</em> najbližjih sosedov</h3>
+<p>Algoritem <em>k</em> najbližjih sosedov steče po sledečem postopku <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup>,</sup><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>.</p>
+<ul>
+<li>Za podano instanco <span class="arithmatex">\(x_N\)</span>, ki jo želimo klasificirati, algoritem izračuna razdalje do vseh že klasificiranih instanc.</li>
+<li>Že klasificirane instance razvrsti naraščajoče glede na razdaljo do instance <span class="arithmatex">\(x_N\)</span>.</li>
+<li>V nadaljnji obravnavi upošteva le <span class="arithmatex">\(k\)</span> prvih instanc v naraščajočem seznamu - <span class="arithmatex">\(k\)</span> najbližjih sosedov.</li>
+<li>Izračuna pogostosti razredov iz nabora <span class="arithmatex">\(k\)</span> najbližjih instanc kot je na sliki spodaj.</li>
+<li>Najpogostejši razred (modus) vrne kot rezultat klasifikacije instance <span class="arithmatex">\(x_N\)</span>. Če se več razredov pojavlja z največjo pogostostjo, se izbere naključen razred izmed vseh najpogostejših.</li>
+</ul>
+<p><figure markdown>
+  <img alt="Klasifikacija instance s pomočjo k najbližjih sosedov ob različnih nastavitvah parametra k" src="../../fig/knn.png" />
+<br />
+<figcaption>Klasifikacija instance (moder trikotnik) s pomočjo k najbližjih sosedov ob različnih nastavitvah parametra k. Pri računanju razdalj je uporabljena evklidska razdalja.</figcaption></p>
+</figure>
+<figure>
+<table>
+<thead>
+<tr>
+<th align="center">Sist. krvni tlak</th>
+<th align="center">Tel. temp.</th>
+<th align="right">Bolan</th>
+<th align="right">Evklidska</th>
+<th align="right"></th>
+<th align="right">Manhattanska</th>
+<th align="right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em>(mmHg)</em></td>
+<td align="center"><em>(°C)</em></td>
+<td align="right"></td>
+<td align="right"><em>d</em></td>
+<td align="right"><em>rang</em></td>
+<td align="right"><em>d</em></td>
+<td align="right"><em>rang</em></td>
+</tr>
+<tr>
+<td align="center">82</td>
+<td align="center">38,0</td>
+<td align="right">Da</td>
+<td align="right">28,0</td>
+<td align="right">17</td>
+<td align="right">28,7</td>
+<td align="right">17</td>
+</tr>
+<tr>
+<td align="center">85</td>
+<td align="center">36,4</td>
+<td align="right">Da</td>
+<td align="right">25,1</td>
+<td align="right">16</td>
+<td align="right">27,3</td>
+<td align="right">16</td>
+</tr>
+<tr>
+<td align="center">89</td>
+<td align="center">36,7</td>
+<td align="right">Da</td>
+<td align="right">21,1</td>
+<td align="right">14</td>
+<td align="right">23,0</td>
+<td align="right">14</td>
+</tr>
+<tr>
+<td align="center">94</td>
+<td align="center">38,2</td>
+<td align="right">Da</td>
+<td align="right">16,0</td>
+<td align="right">11</td>
+<td align="right">16,5</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td align="center">95</td>
+<td align="center">38,2</td>
+<td align="right">Da</td>
+<td align="right">15,0</td>
+<td align="right">9</td>
+<td align="right">15,5</td>
+<td align="right">9</td>
+</tr>
+<tr>
+<td align="center">95</td>
+<td align="center">37,6</td>
+<td align="right">Ne</td>
+<td align="right">15,0</td>
+<td align="right">10</td>
+<td align="right">16,1</td>
+<td align="right">10</td>
+</tr>
+<tr>
+<td align="center">100</td>
+<td align="center">36,6</td>
+<td align="right">Ne</td>
+<td align="right">10,2</td>
+<td align="right">7</td>
+<td align="right">12,1</td>
+<td align="right">7</td>
+</tr>
+<tr>
+<td align="center">104</td>
+<td align="center">35,5</td>
+<td align="right">Ne</td>
+<td align="right">6,8</td>
+<td align="right">5</td>
+<td align="right">9,2</td>
+<td align="right">6</td>
+</tr>
+<tr>
+<td align="center">108</td>
+<td align="center">35,7</td>
+<td align="right">Ne</td>
+<td align="right">3,6</td>
+<td align="right">3</td>
+<td align="right">5,0</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td align="center">108</td>
+<td align="center">38,4</td>
+<td align="right">Da</td>
+<td align="right">2,0</td>
+<td align="right">2</td>
+<td align="right">2,3</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td align="center">109</td>
+<td align="center">39,4</td>
+<td align="right">Da</td>
+<td align="right">1,2</td>
+<td align="right">1</td>
+<td align="right">1,7</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="center">113</td>
+<td align="center">36,4</td>
+<td align="right">Ne</td>
+<td align="right">3,8</td>
+<td align="right">4</td>
+<td align="right">5,3</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td align="center">119</td>
+<td align="center">38,7</td>
+<td align="right">Da</td>
+<td align="right">9,0</td>
+<td align="right">6</td>
+<td align="right">9,0</td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td align="center">124</td>
+<td align="center">37,5</td>
+<td align="right">Ne</td>
+<td align="right">14,1</td>
+<td align="right">8</td>
+<td align="right">15,2</td>
+<td align="right">8</td>
+</tr>
+<tr>
+<td align="center">128</td>
+<td align="center">37,8</td>
+<td align="right">Ne</td>
+<td align="right">18,0</td>
+<td align="right">12</td>
+<td align="right">18,9</td>
+<td align="right">12</td>
+</tr>
+<tr>
+<td align="center">129</td>
+<td align="center">38,8</td>
+<td align="right">Da</td>
+<td align="right">19,0</td>
+<td align="right">13</td>
+<td align="right">19,1</td>
+<td align="right">13</td>
+</tr>
+<tr>
+<td align="center">135</td>
+<td align="center">39,4</td>
+<td align="right">Da</td>
+<td align="right">25,0</td>
+<td align="right">15</td>
+<td align="right">25,7</td>
+<td align="right">15</td>
+</tr>
+<tr>
+<td align="center">140</td>
+<td align="center">36,6</td>
+<td align="right">Ne</td>
+<td align="right">30,1</td>
+<td align="right">18</td>
+<td align="right">32,1</td>
+<td align="right">18</td>
+</tr>
+<tr>
+<td align="center">145</td>
+<td align="center">36,0</td>
+<td align="right">Da</td>
+<td align="right">35,1</td>
+<td align="right">19</td>
+<td align="right">37,7</td>
+<td align="right">19</td>
+</tr>
+<tr>
+<td align="center">147</td>
+<td align="center">36,5</td>
+<td align="right">Da</td>
+<td align="right">37,1</td>
+<td align="right">20</td>
+<td align="right">39,2</td>
+<td align="right">20</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Učne instance.</figcaption>
+</figure>
+<figure>
+<table>
+<thead>
+<tr>
+<th align="center">Sist. krvni tlak</th>
+<th align="center">Tel. temp.</th>
+<th align="right">Bolan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em>(mmHg)</em></td>
+<td align="center"><em>(°C)</em></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="center">110</td>
+<td align="center">38,7</td>
+<td align="right">?</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Nova instanca.</figcaption>
+</figure>
+<h4 id="primer-klasifikacije-pacientov">Primer klasifikacije pacientov</h4>
+<p>Sledi primer izračunov algoritma <em>k</em> najbližjih sosedov po korakih na primeru diagnoze bolezni pacientov. Imamo učno množico, kjer merimo sistolični krvni tlak pacientov in njihovo telesno temperaturo. Med kartotekami imamo že zabeležene podatke 20 prejšnjih pacientov in njihove diagnoze, ki so jih postavili zdravniki. Instance in nov pacient so prikazani v zgornji tabeli.</p>
+<p>V tabeli je prav tako podan izračun razdalj, evklidske in manhattanske. Izračun obeh razdalj med prvo instanco množice in novo instanco pacienta poteka po sledečem postopku.</p>
+<div class="arithmatex">\[\begin{align*}
+    \begin{split}
+         d_E\left(x_N,x_1\right)&amp;=\sqrt{\left( 110-82\right)^2 + \left( 38,7 - 38,0\right)^2}\\
+         &amp;=\sqrt{\left(28\right)^2 + \left(0,7\right)^2}\\
+         &amp;=\sqrt{784 + 0,49} =\sqrt{784,49} = 28,0 \\
+         \\
+         d_M\left(x_N,x_1\right)&amp;=\left| 110-82\right| + \left| 38,7 - 38,0\right|\\
+         &amp;=\left| 28\right| + \left| 0,7\right|\\
+         &amp;=28 + 0,7 =28,7
+    \end{split}
+\end{align*}\]</div>
+<p>Razvidno je, da razlika v krvnem tlaku prevladuje pri izračunu razdalje. Do tega pride zaradi različnih enot, posledica pa je, da razdalje atributov z večjimi številskimi vrednostmi prevladujejo nad atributi manjših številskih vrednosti. Če želimo prispevek atributov pri računanju skupne razdalje poenotiti, se je potrebno lotiti standardizacije podatkov, s čimer postavimo vse meritve na enako zalogo vrednosti.</p>
+<h3 id="standardizacija-podatkov">Standardizacija podatkov</h3>
+<p><em>Standardizacija</em> (angl. <em>standardization</em>) je postopek transformacije podatkov na tak način, da bodo ti po transformaciji imeli povprečje enako 0 in standardni odklon enak 1. Za standardizacijo podatkov <span class="arithmatex">\(x\)</span> rabimo njihovo povprečje <span class="arithmatex">\(\mu\)</span> in standardni odklon <span class="arithmatex">\(\rho\)</span>, ki je definiran sledeče za vseh <span class="arithmatex">\(n\)</span> instanc.</p>
+<div class="arithmatex">\[\begin{align*}
+    \begin{split}
+         {\rho} &amp;= \sqrt{\frac{(x_1-\mu)^2+(x_1-\mu)^2+\dots+(x_n-\mu)^2}{n}}
+    \end{split}
+\end{align*}\]</div>
+<p>Standardizirane vrednosti <span class="arithmatex">\(z\)</span> izračunamo iz izvornih podatkov <span class="arithmatex">\(x\)</span> sledeče.</p>
+<div class="arithmatex">\[\begin{align*}
+    \begin{split}
+         z &amp;= \frac{x-\mu}{\rho}
+    \end{split}
+\end{align*}\]</div>
+<p>Vsak atribut <span class="arithmatex">\(x^1\)</span>, <span class="arithmatex">\(x^2\)</span>, <span class="arithmatex">\(\dots\)</span>, <span class="arithmatex">\(x^l\)</span> standardiziramo ločeno - transformirano z njegovim povprečjem in standardnim odklonom. Po standardizaciji vseh atributov (tudi indikacijskih) imajo vsi atributi povprečje v vrednosti 0 in standardni odklon 1. Razdalje posameznih atributov med instancami bodo tako v podobnem intervalu.</p>
+<p>Za standardizacijo podatkov pacientov tako potrebujemo podatke povprečja in standardnega odklona instanc, kar prikazuje spodnja enačba. </p>
+<div class="arithmatex">\[\begin{align*}
+    \begin{split}
+         \mu\left(\text{Sistolični krvni pritisk}\right)&amp;= 112,45\\
+         \rho\left(\text{Sistolični krvni pritisk}\right)&amp;= 19,58\\
+         \mu\left(\text{Telesna temperatura}\right)&amp;= 37,42\\
+         \rho\left(\text{Telesna temperatura}\right)&amp;= 1,17\\
+    \end{split}
+\end{align*}\]</div>
+<p>Tabela prikazuje vrednosti atributov po standardizaciji.</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th align="center">Sist. krvni tlak</th>
+<th align="center">Tel. temp.</th>
+<th align="right">Bolan</th>
+<th align="right">Evklidska</th>
+<th align="right"></th>
+<th align="right">Manhattanska</th>
+<th align="right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em>(mmHg)</em></td>
+<td align="center"><em>(°C)</em></td>
+<td align="right"></td>
+<td align="right"><em>d</em></td>
+<td align="right"><em>rang</em></td>
+<td align="right"><em>d</em></td>
+<td align="right"><em>rang</em></td>
+</tr>
+<tr>
+<td align="center">-1,55</td>
+<td align="center">0,49</td>
+<td align="right">Da</td>
+<td align="right">1,55</td>
+<td align="right">11</td>
+<td align="right">2,03</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td align="center">-1,40</td>
+<td align="center">-0,87</td>
+<td align="right">Da</td>
+<td align="right">2,34</td>
+<td align="right">15</td>
+<td align="right">3,24</td>
+<td align="right">17</td>
+</tr>
+<tr>
+<td align="center">-1,20</td>
+<td align="center">-0,61</td>
+<td align="right">Da</td>
+<td align="right">2,01</td>
+<td align="right">14</td>
+<td align="right">2,78</td>
+<td align="right">15</td>
+</tr>
+<tr>
+<td align="center">-0,94</td>
+<td align="center">0,66</td>
+<td align="right">Da</td>
+<td align="right">0,92</td>
+<td align="right">5</td>
+<td align="right">1,24</td>
+<td align="right">6</td>
+</tr>
+<tr>
+<td align="center">-0,89</td>
+<td align="center">0,66</td>
+<td align="right">Da</td>
+<td align="right">0,88</td>
+<td align="right">4</td>
+<td align="right">1,19</td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td align="center">-0,89</td>
+<td align="center">0,15</td>
+<td align="right">Ne</td>
+<td align="right">1,21</td>
+<td align="right">8</td>
+<td align="right">1,70</td>
+<td align="right">8</td>
+</tr>
+<tr>
+<td align="center">-0,64</td>
+<td align="center">-0,70</td>
+<td align="right">Ne</td>
+<td align="right">1,86</td>
+<td align="right">12</td>
+<td align="right">2,30</td>
+<td align="right">13</td>
+</tr>
+<tr>
+<td align="center">-0,43</td>
+<td align="center">-1,64</td>
+<td align="right">Ne</td>
+<td align="right">2,74</td>
+<td align="right">19</td>
+<td align="right">3,03</td>
+<td align="right">16</td>
+</tr>
+<tr>
+<td align="center">-0,23</td>
+<td align="center">-1,47</td>
+<td align="right">Ne</td>
+<td align="right">2,56</td>
+<td align="right">17</td>
+<td align="right">2,66</td>
+<td align="right">14</td>
+</tr>
+<tr>
+<td align="center">-0,23</td>
+<td align="center">0,84</td>
+<td align="right">Da</td>
+<td align="right">0,28</td>
+<td align="right">1</td>
+<td align="right">0,36</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="center">-0,18</td>
+<td align="center">1,69</td>
+<td align="right">Da</td>
+<td align="right">0,60</td>
+<td align="right">3</td>
+<td align="right">0,65</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td align="center"><mark>0,03</mark></td>
+<td align="center"><mark>-0,87</mark></td>
+<td align="right"><mark>Ne</mark></td>
+<td align="right"><mark>1,97</mark></td>
+<td align="right"><mark>13</mark></td>
+<td align="right"><mark>2,11</mark></td>
+<td align="right"><mark>12</mark></td>
+</tr>
+<tr>
+<td align="center">0,33</td>
+<td align="center">1,09</td>
+<td align="right">Da</td>
+<td align="right">0,46</td>
+<td align="right">2</td>
+<td align="right">0,46</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td align="center">0,59</td>
+<td align="center">0,07</td>
+<td align="right">Ne</td>
+<td align="right">1,25</td>
+<td align="right">9</td>
+<td align="right">1,74</td>
+<td align="right">9</td>
+</tr>
+<tr>
+<td align="center">0,79</td>
+<td align="center">0,32</td>
+<td align="right">Ne</td>
+<td align="right">1,20</td>
+<td align="right">7</td>
+<td align="right">1,69</td>
+<td align="right">7</td>
+</tr>
+<tr>
+<td align="center">0,85</td>
+<td align="center">1,18</td>
+<td align="right">Da</td>
+<td align="right">0,97</td>
+<td align="right">6</td>
+<td align="right">1,06</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td align="center">1,15</td>
+<td align="center">1,69</td>
+<td align="right">Da</td>
+<td align="right">1,41</td>
+<td align="right">10</td>
+<td align="right">1,87</td>
+<td align="right">10</td>
+</tr>
+<tr>
+<td align="center">1,41</td>
+<td align="center">-0,70</td>
+<td align="right">Ne</td>
+<td align="right">2,36</td>
+<td align="right">16</td>
+<td align="right">3,32</td>
+<td align="right">18</td>
+</tr>
+<tr>
+<td align="center">1,66</td>
+<td align="center">-1,21</td>
+<td align="right">Da</td>
+<td align="right">2,91</td>
+<td align="right">20</td>
+<td align="right">4,09</td>
+<td align="right">20</td>
+</tr>
+<tr>
+<td align="center">1,76</td>
+<td align="center">-0,78</td>
+<td align="right">Da</td>
+<td align="right">2,66</td>
+<td align="right">18</td>
+<td align="right">3,76</td>
+<td align="right">19</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Standardizirane učne instance.</figcaption>
+</figure>
+<figure>
+<table>
+<thead>
+<tr>
+<th align="center">Sist. krvni tlak</th>
+<th align="center">Tel. temp.</th>
+<th align="right">Bolan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em>(mmHg)</em></td>
+<td align="center"><em>(°C)</em></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="center">-0,13</td>
+<td align="center">1,09</td>
+<td align="right">?</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Standardizirana nova instanca.</figcaption>
+</figure>
+<p>Podatki po standardizaciji kažejo drugačno sliko. Vrstni red najbližjih instanc podani instanci se spremeni.</p>
+<p>Instanca, ki je v tabeli označena, je pred standardizacijo bila četrta najbližja podani instanci. Pred standardizacijo je namreč bila razlika v temperaturi majhna v primerjavi z razliko v krvnem tlaku. Po standardizaciji pa je razlika v temperaturi mnogo večja, kot razlika pri krvnem tlaku. To je prav, saj sta bili pred standardizacijo zalogi vrednosti obeh meritev drugačni. Realni obseg telesne temperature človeka je približno med 35 in 41 °C, kar predstavlja maksimalno razliko 6 enot. Šest enot razlike pri krvnem tlaku pa ni niti približno realnemu obsegu sistoličnega krvnega tlaka, ki se lahko giblje v intervalu med 80 in 180 mmHg z maksimalno razliko kar 100 enot. Po standardizaciji se krvni tlak giblje med <span class="arithmatex">\(-1,55\)</span> ter <span class="arithmatex">\(1,76\)</span> z maksimalno razliko <span class="arithmatex">\(3,31\)</span>. To je v skladu z obsegom telesne temperature, ki se po standardizaciji giblje med <span class="arithmatex">\(-1,64\)</span> ter <span class="arithmatex">\(1,69\)</span> z maksimalno razliko <span class="arithmatex">\(3,33\)</span>.</p>
+<p>Standardizacija je le en postopek tehnike, ki jo imenujemo <em>normalizacija podatkov</em>. Alternative standardizaciji so <em>min-max skaliranje</em>, <em>centriranje</em>, <em>rangiranje</em> in drugi. Vsak pristop strojnega učenja ni občutljiv na intervale oz. skalo atributov. Med take štejemo algoritme kreacije odločitvenih dreves in naivnega Bayesa. Dobra praksa je, da pri postopku podatkovnega rudarjenja podatke pred obdelavo vedno normaliziramo, saj se s tem izognemo morebitnemu zavajanju algoritmov.</p>
+<p>Negativna plat normalizacije podatkov pa je, da ti niso največkrat enostavno interpretabilni. Kakor kažejo standardizirane vrednosti v zgornji tabeli, so vrednosti telesne temperature nesmiselne. To postane še posebej problematično v primeru, ko gradimo model znanja, ki temelji na pravilih (odločitvena pravila ali odločitvena drevesa), saj bodo vrednosti v pravilih standardizirane.</p>
+<h4 id="standardizacija-v-pythonu">Standardizacija v Pythonu</h4>
+<p>Sledi primer, kjer za začetek najprej pregledamo povprečne vrednosti in standardne odklone atributov pred standardizacijo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># Naložimo podatke</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">podatki</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Povprečja pred standardizacijo:&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Standardni odkloni pred standardizacijo:&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Povprečja pred standardizacijo:
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sepal length (cm)    5.843333
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>sepal width (cm)     3.057333
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>petal length (cm)    3.758000
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>petal width (cm)     1.199333
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>dtype: float64
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>Standardni odkloni pred standardizacijo:
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>sepal length (cm)    0.828066
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>sepal width (cm)     0.435866
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>petal length (cm)    1.765298
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>petal width (cm)     0.762238
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>dtype: float64
+</code></pre></div>
+</div>
+<p>Sedaj pa te podatke standardiziramo in izpišemo povprečja ter standardne odklone novih vrednosti. Knjižnica <code>scikit-learn</code> ponuja kar nekaj načinov transformacije podatkov. Za standardizacijo se uporablja razred <code>StandardScaler</code>. S klicem metode <code>fit</code> se izračunata povprečje in standardni odklon iz podanih podatkov. Za transformacijo podatkov, pa se uporabi klic metode <code>transform</code>, kateri podamo podatke, ki jih želimo transformirati.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Inicializacija standardizatorja</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">std</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># Izračunamo povprečja in standardne odklone atributov</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">std</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># Standardizacija podatkov</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="n">stand_podatki</span> <span class="o">=</span> <span class="n">std</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Povprečja po standardizaciji:&#39;</span><span class="p">)</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="nb">print</span><span class="p">(</span><span class="n">stand_podatki</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Standardni odkloni po standardizaciji:&#39;</span><span class="p">)</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nb">print</span><span class="p">(</span><span class="n">stand_podatki</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ovprečja po standardizaciji:
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>-4.73695157e-16 -7.81597009e-16 -4.26325641e-16 -4.73695157e-16
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>Standardni odkloni po standardizaciji:
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>1. 1. 1. 1.
+</code></pre></div>
+</div>
+<p>Pregled rezultatov povprečij kaže, da so te zelo blizu vrednosti 0 (<span class="arithmatex">\(10^{-15}\)</span>), standardni odkloni pa so enaki 1. Če želimo proces izračuna povprečij in standardnih odklonov ter proces transformacije podatkov združiti, lahko uporabimo metodo <code>fit_transform</code>, ki na podanih podatkih izračuna vmesne vrednosti in jih vrne transformirane.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">stand_podatki</span> <span class="o">=</span> <span class="n">std</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="dolocitev-razreda-podane-instance">Določitev razreda podane instance</h3>
+<p>Po izračunu razdalj in določitvi rangov glede na bližino do nove instance sledi določitev razreda (klasifikacija) nove instance. Pri tem procesu igra pomembno vlogo določitev vrednosti parametra <span class="arithmatex">\(k\)</span>, ki nam pove, koliko najbližjih instanc upoštevamo pri klasifikaciji. Vseh <span class="arithmatex">\(k\)</span> najbližjih instanc bo namreč glasovalo za razred nove instance - vsaka instanca bo dala glas za razred, kateremu le-ta pripada.</p>
+<p>Če je parameter <span class="arithmatex">\(k=1\)</span>, potem vzamemo le najbližjo instanco in bo novi instanci dodeljen razred te instance. Če se navežemo na primer iz tabele zgoraj, je pri izračunu obeh razdalj najbližja ista instanca - ta je razreda <em>Da</em> kar pomeni, da tudi novo instanco klasificiramo v razred <em>Da</em>. Tabeli spodaj prikazujeta rezultate klasifikacije pri različnih nastavitvah - pri standardiziranih in nestandardiziranih podatkih, pri različnih vrednostih <span class="arithmatex">\(k\)</span> in pri evklidski ter manhattanski razdalji.</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center">Evklidska</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center">Manhattanska</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em>k</em></td>
+<td align="center"><em>Da</em></td>
+<td align="center"><em>Ne</em></td>
+<td align="center"><em>Rezultat</em></td>
+<td align="center"><em>Da</em></td>
+<td align="center"><em>Ne</em></td>
+<td align="center"><em>Rezultat</em></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">Da</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">Da</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">Da</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">Da</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">Da/Ne</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">Da/Ne</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">Ne</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">Da</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Klasifikacija s k najbližjih sosedov pri različnih nastavitvah na nestandardiziranih podatkih.</figcaption>
+</figure>
+<figure>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center">Evklidska</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center">Manhattanska</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em>k</em></td>
+<td align="center"><em>Da</em></td>
+<td align="center"><em>Ne</em></td>
+<td align="center"><em>Rezultat</em></td>
+<td align="center"><em>Da</em></td>
+<td align="center"><em>Ne</em></td>
+<td align="center"><em>Rezultat</em></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">Da</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">Da</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">Da</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">Da</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">Da</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">Da</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">Da</td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">Da</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Klasifikacija s k najbližjih sosedov pri različnih nastavitvah na standardiziranih podatkih.</figcaption>
+</figure>
+<p>Zgornja tabela kaže zanimive rezultate. Najprej poglejmo nestandardizirane podatke. Tako pri evklidski, kot tudi pri manhattanski razdalji, se z večanjem števila najbližjih instanc, ki se upoštevajo pri klasifikaciji, veča tudi negotovost, saj iz razreda <em>Da</em> pri upoštevanju le ene najbližje instance (<span class="arithmatex">\(k=1\)</span>) preidemo do negotovosti, ko upoštevamo štiri najbližje instance (<span class="arithmatex">\(k=4\)</span>), pa vse do spremembe odločitve v razred <em>Ne</em>, ko upoštevamo pet najbližjih instanc (<span class="arithmatex">\(k=5\)</span>) pri evklidski razdalji. Ti rezultati nam kažejo tudi razliko med evklidsko in manhattansko razdaljo, saj se odločitve končnega razreda instance ne skladajo pri <span class="arithmatex">\(k=5\)</span>. Hkrati pa se moramo soočiti še z negotovostjo pri <span class="arithmatex">\(k=4\)</span>. Ko pridemo do neodločenega izida, se algoritem odloči za en naključen razred v vodstvu (tisti, ki ima manjši indeks), kar pa ni vedno najboljša odločitev. Če bi ročno želeli izničiti možnosti za neodločene izide in naključne odločitve med njimi, bi algoritem preprosto zagnali še na drugih nastavitvah vrednosti <span class="arithmatex">\(k\)</span> in pogledali, kakšen je končen razred tedaj. Ko imamo opravek z binarno klasifikacijo (delitev instanc v dva razreda), pa se neodločenih izidov lahko znebimo z liho vrednostjo <span class="arithmatex">\(k\)</span>.</p>
+<p>Po drugi strani pa ob pregledu rezultatov po standardizaciji vidimo večjo stabilnost, saj obstaja konsenz pri vseh nastavitvah <span class="arithmatex">\(k\)</span> in pri obeh tipih razdalje. Ta pristop se tako izkaže kot bolj robusten na manjše spremembe, pa tudi konceptualno je primernejši, saj vsi atributi instanc enakovredno vplivajo na odločitev klasifikacije.</p>
+<h2 id="uporaba-k-najblizjih-sosedov-v-pythonu">Uporaba <em>k</em> najbližjih sosedov v Pythonu</h2>
+<p>Algoritem <em>k</em> najbližjih sosedov je v knjižnici <code>scikit-learn</code> implementiran z razredom <code>KNeighborsClassifier</code>. Že pri inicializaciji primerka tega razreda določimo <span class="arithmatex">\(k\)</span> število najbližjih sosedov s parametrom <code>n_neighbors</code> in način računanja razdalje s parametrom <code>metric</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">klasif</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>                              <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;manhattan&#39;</span><span class="p">)</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">klasif</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_u</span><span class="p">,</span> <span class="n">y_u</span><span class="p">)</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">napovedi</span> <span class="o">=</span> <span class="n">klasif</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</code></pre></div>
+<p>Pri računanju razdalje lahko uporabimo evklidsko razdaljo z <code>euclidean</code>, mahattansko z <code>manhattan</code> in kosinusno razdaljo s <code>cosine</code>. S klicem metode <code>fit</code> in podajo podatkov instanc <code>X_u</code> in njihovih razredov <code>y_u</code> te shranimo in bodo služili za izračun najbližjih sosedov. Metodo <code>predict</code> pa kličemo s podajo množice instanc <code>X_t</code>, ki jih želimo klasificirati.</p>
+<p>To je tudi standardni postopek uporabe drugih algoritmov klasifikacije, regresije in gručenja v knjižnici <code>scikit-learn</code>:</p>
+<ol>
+<li>Nastavitve definiramo v konstruktorju.</li>
+<li>Model znanja zgradimo s <code>fit(podatki_instanc, resitve_instanc)</code>.</li>
+<li>Model znanja uporabimo s <code>predict(podatki_novih_instanc)</code>.</li>
+</ol>
+<p>Algoritmi pa lahko imajo tudi sebi specifične metode. V primeru <em>k</em> najbližjih sosedov je njemu posebna metoda <code>kneighbors</code>, kateri podamo instance, za katere iščemo najbližje sosede, ter parameter <code>n_neighbors</code>, s katerim povemo, koliko najbližjih sosedov iščemo iz nabora vseh instanc podanih že prej v metodi <code>fit</code>. Rezultat sta dva seznama: </p>
+<ol>
+<li>seznam razdalj od izbranih instanc do najbližjih sosedov v naraščajočem vrstnem redu glede na razdaljo, ter</li>
+<li>seznam indeksov najbližjih instanc, ponovno od najbližjega naprej.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">klasif</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_u</span><span class="p">,</span> <span class="n">y_u</span><span class="p">)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">razdalje</span><span class="p">,</span> <span class="n">sosedi</span> <span class="o">=</span> <span class="n">klasif</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">nove_instance</span><span class="p">,</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>                                     <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<p>Sledi pregled uporabe klasifikacijskega algoritma <em>k</em> najbližjih sosedov za namen iskanja petih najbližjih sosedov eni instanci. Najprej s sledečo kodo naložimo instance podatkovne množice <em>Iris</em>, iz nje izberemo instanco v vrstici z indeksom 133 ter jo odstranimo iz podatkovne množice.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># Naložimo podatke</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">podatki</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1"># Izberemo eno instanco</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">izbrana</span> <span class="o">=</span> <span class="mi">133</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">X_izbrana</span> <span class="o">=</span> <span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">izbrana</span><span class="p">,:]</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="n">y_izbrana</span> <span class="o">=</span> <span class="n">podatki</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">izbrana</span><span class="p">]</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="c1"># Izbrano instanco izločimo iz ostalih podatkov</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="n">X_ostali</span> <span class="o">=</span> <span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">izbrana</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="n">y_ostali</span> <span class="o">=</span> <span class="n">podatki</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">izbrana</span><span class="p">)</span>
+</code></pre></div>
+<p>Izbira vrednosti iz polja poteka s pomočjo klica <code>iloc[vrstica, stolpec]</code>, kamor podamo indeks vrstice in indeks stolpca. Če želimo izbrati celotno vrsto, podamo namesto indeksa kar dvopičje <code>:</code>. Tako s <code>podatki.data.iloc[:, 12]</code> izberemo stolpec z indeksom 12, s klicem <code>podatki.data.iloc[8, :]</code> pa izberemo vrstico z indeksom 8.</p>
+<p>Če želimo izbrati več vrednosti, pa namesto števila na mestu vrstice in stolpca podamo polje indeksov. S klicem <code>podatki.data.iloc[[2, 5, 8], :]</code> izberemo vrstice s temi indeksi. In obratno, s klicem <code>podatki.data.iloc[:, [3, 6, 9]]</code> se vrnejo stolpci z indeksi 3, 6 in 9.</p>
+<p>Pri izbiri vrednosti iz vektorja podamo le eno vrednost, saj ima ta le eno dimenzijo. Tako nam klic <code>podatki.target.iloc[[2, 5, 8]]</code> vrne podatke z indeksi 2, 5 in 8.</p>
+<p>Z metodo <code>podatki.data.drop(izbrana, axis=0)</code> odstranimo instanco z indeksom <code>izbrana</code> iz podatkov <code>podatki.data</code>. Parameter <code>axis</code> določa, po kateri osi izbrišemo podatke - če je podana 0, izbrišemo vrstico, če pa 1, pa izbrišemo stolpec. Pri izbrisu iz <code>podatki.target</code> parametra <code>axis</code> ni potrebno podati, saj so podatki v obliki vektorja, ki ima le eno dimenzijo.</p>
+<h3 id="vizualizacija-podatkov">Vizualizacija podatkov</h3>
+<p>S pomočjo knjižnice <code>seaborn</code> lahko enostavno vizualiziramo instance. Z dvema klicema metode <code>scatterplot</code> se en na drugega izrišeta dva grafa raztrosa. S parametroma <code>x</code> in <code>y</code> podamo podatke, ki naj so izrisani na teh oseh.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">x_os</span><span class="p">,</span> <span class="n">y_os</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># Izrišemo ostale instance</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_ostali</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">x_os</span><span class="p">],</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>                <span class="n">y</span><span class="o">=</span><span class="n">X_ostali</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">y_os</span><span class="p">],</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>                <span class="n">hue</span><span class="o">=</span><span class="n">podatki</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">y_ostali</span><span class="p">],</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>                <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="c1"># Izrišemo eno izbrano instanco</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">X_izbrana</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x_os</span><span class="p">]],</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>                <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">X_izbrana</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">y_os</span><span class="p">]],</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>                <span class="n">hue</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Neznan&#39;</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Neznan&#39;</span><span class="p">],</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>                <span class="n">markers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Neznan&#39;</span><span class="p">:</span> <span class="s1">&#39;^&#39;</span><span class="p">})</span>
+</code></pre></div>
+<div class="result">
+<figure>
+<p><img alt="Instance podatkovne zbirke Iris." src="../../fig/sns1.png" />
+  </p>
+<figcaption>Instance podatkovne zbirke Iris. Horizontalna x os predstavlja prvi atribut, vertikalna y os pa drugi atribut podatkovne množice. Barve ločijo razrede instanc, s trikotnikom pa je označena instanca, ki jo želimo klasificirati.</figcaption>
+</figure>
+</div>
+<p>Pomanjkljivost grafične predstavitve podatkov je, da lahko izrišemo instance glede na omejeno število njihovih atributov. V našem primeru imamo dvodimenzionalen graf, kjer smo posamezne osi določili s spremenljivkama <code>x_os</code> in <code>y_os</code>. Parameter <code>hue</code> prejme podatke, ki bodo narisane označbe delili glede na barvo - v našem primeru so to podatki o razredu. Parameter <code>style</code> pa prejme podatke, ki določajo stil označbe, ki jih definiramo s parametrom <code>markers</code>. Barve označb določamo s podajanjem teme v parameter <code>palette</code>.</p>
+<h3 id="ucenje-in-uporaba-modela-znanja">Učenje in uporaba modela znanja</h3>
+<p>Učenje modela in napoved razreda instance na indeksu 133 poteka na sledeč način. Najprej s konstruktorjem določimo vrednost <span class="arithmatex">\(k\)</span> na pet najbližjih sosedov po izračunu manhattanske razdalje. Temu sledi klic metode <code>fit</code>, kateri podamo podatke instanc <code>X_ostali</code> in njihove razrede <code>y_ostali</code>. Ker metoda <code>predict</code> pričakuje več instanc, dodamo instanco <code>X_izbrana</code> najprej v seznam in ta seznam podamo v klic metode <code>predict([X_izbrana])</code>. Če <code>X_izbrana</code> ne bi bil vektor, ampak polje, bi klic metode potekal brez ovijanja v seznam <code>predict(X_izbrana)</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Inicializiramo klasifikator</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;manhattan&#39;</span><span class="p">)</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="c1"># Shranimo instance za primerjavo</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_ostali</span><span class="p">,</span> <span class="n">y_ostali</span><span class="p">)</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="c1"># Napovemo razred izbrane instance</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="n">napoved</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">X_izbrana</span><span class="p">])</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;KNN je napovedal, da je instanca razreda </span><span class="si">{</span><span class="n">podatki</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">napoved</span><span class="p">]</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ta instanca je dejansko razreda </span><span class="si">{</span><span class="n">podatki</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">y_izbrana</span><span class="p">]</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>KNN je napovedal, da je instanca razreda [&#39;versicolor&#39;].
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>Ta instanca je dejansko razreda virginica.
+</code></pre></div>
+</div>
+<p>Klasifikator je napovedal napačen razred za to instanco. Preglejmo katerih pet instanc je po izračunu manhattanske razdalje najbližje naši izbrani instanci iz vrstice z indeksom 133.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Izbrani instanci najdemo pet najbližjih sosedov</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">razdalje</span><span class="p">,</span> <span class="n">sosedi</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">([</span><span class="n">X_izbrana</span><span class="p">],</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pet najbližjih: </span><span class="si">{</span><span class="n">sosedi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Razdalje od najbližjih do izbrane: </span><span class="si">{</span><span class="n">razdalje</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Pet najbližjih: [[ 72  83 123 126  54]]
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Razdalje od najbližjih do izbrane: [[0.5 0.5 0.6 0.7 0.7]]
+</code></pre></div>
+</div>
+<p>Pet najbližjih instanc po manhattanski razdalji so instance z indeksi 72, 83, 123, 126 in 54. Rezultati razdalj pa so kar manhattanske razdalje teh sosedov do podane instance.</p>
+<h3 id="vpliv-nastavitev-na-rezultate">Vpliv nastavitev na rezultate</h3>
+<p>Poglejmo, kako se spremeni seznam petih najbližjih instanc, ko spreminjamo način izračuna razdalje med instancami.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">for</span> <span class="n">razdalja</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span> <span class="s1">&#39;manhattan&#39;</span><span class="p">,</span> <span class="s1">&#39;cosine&#39;</span><span class="p">]:</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">razdalja</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_ostali</span><span class="p">,</span> <span class="n">y_ostali</span><span class="p">)</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="n">razdalje</span><span class="p">,</span> <span class="n">najblizje</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">([</span><span class="n">X_izbrana</span><span class="p">],</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Najbližje instance po </span><span class="si">{</span><span class="n">razdalja</span><span class="si">}</span><span class="s1"> so </span><span class="si">{</span><span class="n">najblizje</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Razdalje so </span><span class="si">{</span><span class="n">razdalje</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Najbližje instance po euclidean so [[ 83  72 123 126 127]]
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>Razdalje so [[0.33166248 0.36055513 0.37416574 0.43588989 0.45825757]]
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>Najbližje instance po manhattan so [[ 72  83 123 126  54]]
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>Razdalje so [[0.5 0.5 0.6 0.7 0.7]]
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>Najbližje instance po cosine so [[125 129  90 131  83]]
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>Razdalje so [[0.0001158  0.00022532 0.00033682 0.00034546 0.00039085]]
+</code></pre></div>
+</div>
+<p>Izračun petih najbližjih sosedov po evklidski in manhattanski razdalji vrne podobne rezultate. Instanca z indeksom 83 je najbližja izbrani po izračunu evklidske razdalje in je druga najbližja po manhattanski razdalji - mesto si izmenja z instanco 72. Tretje in četrto mesto sta v obeh razdaljah zasedli instanci 123 in 125. Peto mesto ima v primeru evklidske razdalje instanca 127, v primeru manhattanske pa instanca 54. Če sta instanci 127 in 54 drugačnega razreda, lahko ta razlika vpliva na razred izbrane instance.</p>
+<p>Seznam najbližjih instanc po izračunu kosinusne razdalje pa je skorajda popolnoma drugačen od ostalih dveh - le instanca 83 je v vseh treh seznamih. Vse ostale štiri instance so v seznamu kosinusne razdalje druge v primerjavi s seznamoma evklidske in manhattanske razdalje. Ti rezultati nam kažejo, kako pomembna je odločitev glede načina izračuna razdalje.</p>
+<p>Sledeča slika kaže delitev območja razredov glede na način računanja razdalje. Pri kreaciji slike sta bila upoštevana prva dva atributa in vrednost števila sosedov <em>k</em> je bila nastavljena na 5. Slika kaže, da večjih razlik med evklidsko in manhattansko razdaljo pri tej podatkovni množici in nastavitvi <em>k</em> ni. Delitev območij je relativno jasna, z nekoliko večjim prekrivanjem v sredini, kjer so si instance razredov <em>versicolor</em> in <em>virginica</em> zelo podobne. Po drugi strani je razvidno, da delitev po izračunu glede na kosinusno razdaljo ni primerna za podano podatkovno množico, saj sta območji <em>versicolor</em> in <em>virginica</em> preveč prepleteni in je klasifikacija instanc v tem območju nestabilna.</p>
+<figure>
+<p><img alt="Delitev na območja razredov glede na način računanja razdalj med instancami." src="../../fig/sns_razdalje.png" />
+  </p>
+<figcaption>Delitev na območja razredov glede na način računanja razdalj med instancami.</figcaption>
+</figure>
+<p>Poglejmo si še, kako vrednost <em>k</em> vpliva na končno klasifikacijo izbrane instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]:</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_ostali</span><span class="p">,</span> <span class="n">y_ostali</span><span class="p">)</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="n">napoved</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">X_izbrana</span><span class="p">])</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;KNN z k=</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> je napovedal, da je izbrana instanca razreda </span><span class="si">{</span><span class="n">podatki</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">napoved</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>KNN z k=1 je napovedal, da je izbrana instanca razreda [&#39;versicolor&#39;]
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>KNN z k=3 je napovedal, da je izbrana instanca razreda [&#39;versicolor&#39;]
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>KNN z k=5 je napovedal, da je izbrana instanca razreda [&#39;virginica&#39;]
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>KNN z k=8 je napovedal, da je izbrana instanca razreda [&#39;versicolor&#39;]
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>KNN z k=10 je napovedal, da je izbrana instanca razreda [&#39;virginica&#39;]
+</code></pre></div>
+</div>
+<p>Pri spreminjanju števila najbližjih sosedov ne vidimo konsenza. Razred izbrane instance z indeksom 133 se namreč spreminja iz (napačnega) razreda <em>versicolor</em> ob glasovanju enega, treh in osmih najbližjih sosedov, v (pravilen) razred <em>virginica</em> ob glasovanju petih ali desetih najbližjih sosedov.</p>
+<p>Ponovno je razvidno, da nastavitev igra vlogo pri napovedih algoritma. Vrednost <em>k</em> se največkrat določi po preizkušanju, vsekakor pa mora biti vrednost smiselna (če je <em>k</em> prevelik, bo v resnici algoritem vrnil najpogostejši razred).</p>
+<p>Preveč optimiziranja nastavitev za namen boljše klasifikacije ene instance je nesmiselno. Instanca indeksa 133 je bila izbrana namenoma, saj se napovedi njenega razreda zelo spreminjajo ob drugačnih nastavitvah. Večji del instanc dobi enako napoved razreda, ne glede na tip razdalje in <em>k</em>. To nam pove več o tej instanci kot pa o samem algoritmu. Mogoče je ta nekoliko nenavadna, ali pa je bila že v osnovi (s strani ekspertov) klasificirana napačno. Iz tega sledi, da je smiselno gledati rezultate in kakovost klasifikacije na več instancah, ne le na eni - kaj pa če je ta izbrana nenavadno. V naslednjem poglavju bomo spoznali načine ovrednotenja kakovosti klasifikacije in proces pravilne izbire instanc, s katerimi testiramo izbrani algoritem klasifikacije in njegovih nastavitev.</p>
+<p>Spodnja slika prikazuje različna območja razredov glede na različne vrednosti števila sosedov <em>k</em>. Pri kreaciji slike sta bila ponovno upoštevana le prva dva atributa podatkov in računanje evklidskih razdalj. Iz slike je razvidno, da majhne vrednosti k prinesejo kar nekaj majhnih področij klasifikacije. Po drugi strani pa je razvidno, da nastavitev števila sosedov na 10 nekoliko pokvari delitev območja.</p>
+<figure>
+<p><img alt="Delitev na območja razredov glede na število najbližjih sosedov." src="../../fig/sns_k.png" />
+  </p>
+<figcaption>Delitev na območja razredov glede na število najbližjih sosedov k: 1, 3, 5, 8 in 10.</figcaption>
+</figure>
+<h3 id="vpliv-standardizacije-podatkov-na-rezultate">Vpliv standardizacije podatkov na rezultate</h3>
+<p>Poglejmo si, če se klasifikacija kaj spremeni, če uporabimo standardizirane podatke.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Standardiziramo podatke</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="n">standardizator</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">standardizator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_ostali</span><span class="p">)</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="n">X_ostali_s</span> <span class="o">=</span> <span class="n">standardizator</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_ostali</span><span class="p">)</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="n">X_izbrana_s</span> <span class="o">=</span> <span class="n">standardizator</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">X_izbrana</span><span class="p">])</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="k">for</span> <span class="n">razdalja</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span> <span class="s1">&#39;manhattan&#39;</span><span class="p">,</span> <span class="s1">&#39;cosine&#39;</span><span class="p">]:</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]:</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>        <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">razdalja</span><span class="p">)</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>        <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_ostali_s</span><span class="p">,</span> <span class="n">y_ostali</span><span class="p">)</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>        <span class="n">nap</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_izbrana_s</span><span class="p">)</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;KNN metric=</span><span class="si">{</span><span class="n">razdalja</span><span class="si">}</span><span class="s1">, k=</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> je napovedal razred </span><span class="si">{</span><span class="n">podatki</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">nap</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>KNN metric=euclidean, k=1 je napovedal razred [&#39;versicolor&#39;]
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>KNN metric=euclidean, k=3 je napovedal razred [&#39;versicolor&#39;]
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>KNN metric=euclidean, k=5 je napovedal razred [&#39;versicolor&#39;]
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>KNN metric=manhattan, k=1 je napovedal razred [&#39;versicolor&#39;]
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>KNN metric=manhattan, k=3 je napovedal razred [&#39;versicolor&#39;]
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>KNN metric=manhattan, k=5 je napovedal razred [&#39;versicolor&#39;]
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>KNN metric=cosine, k=1 je napovedal razred [&#39;versicolor&#39;]
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>KNN metric=cosine, k=3 je napovedal razred [&#39;virginica&#39;]
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>KNN metric=cosine, k=5 je napovedal razred [&#39;versicolor&#39;]
+</code></pre></div>
+</div>
+<p>Objekt razreda <code>StandardScaler</code> najprej naučimo, kaj so povprečja in standardni odkloni podatkov s pomočjo klica <code>fit</code>. Kasneje to uporabilo za transformacijo (standardizacijo) tako ostalih podatkov <code>X_ostali</code>, kakor tudi izbrane instance <code>X_izbrana</code>. Pri tem uporabimo klic metode <code>transform</code>. Napovedi so mnogo bolj robustne na spreminjanje nastavitev klasifikacijskega algoritma, ko imamo opravek s standardiziranimi podatki. Namreč, najpogosteje napovedan razred je bil <em>versicolor</em>. Čeprav je napoved razreda napačna, imamo raje robustne napovedi, kot pa take, ki so preveč odvisne od nastavitev algoritma.</p>
+<h3 id="enovit-primer-klasifikacije-vec-instanc">Enovit primer klasifikacije več instanc</h3>
+<p>Sledi enovit primer klasifikacije več instanc iz <em>Iris</em> podatkovne zbirke, kjer so podatki tudi standardizirani.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="c1"># Naložimo podatke</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="n">podatki</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="c1"># Izberemo več instanc</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="n">izbrane</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">121</span><span class="p">]</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="n">X_izbrane</span> <span class="o">=</span> <span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">izbrane</span><span class="p">,:]</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="n">y_izbrane</span> <span class="o">=</span> <span class="n">podatki</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">izbrane</span><span class="p">]</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="c1"># Izbrano instanco izločimo iz ostalih podatkov</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="n">X_ostali</span> <span class="o">=</span> <span class="n">podatki</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">izbrane</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="n">y_ostali</span> <span class="o">=</span> <span class="n">podatki</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">izbrane</span><span class="p">)</span>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="c1"># Standardiziramo podatke</span>
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a><span class="n">standardizator</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a><span class="n">standardizator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_ostali</span><span class="p">)</span>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a><span class="n">X_ostali_s</span> <span class="o">=</span> <span class="n">standardizator</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_ostali</span><span class="p">)</span>
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="n">X_izbrane_s</span> <span class="o">=</span> <span class="n">standardizator</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_izbrane</span><span class="p">)</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a><span class="c1"># Zgradimo klasifikator in napovedmo razrede</span>
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a><span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+<a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_ostali_s</span><span class="p">,</span> <span class="n">y_ostali</span><span class="p">)</span>
+<a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a><span class="n">napovedi</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_izbrane_s</span><span class="p">)</span>
+<a id="__codelineno-27-28" name="__codelineno-27-28" href="#__codelineno-27-28"></a>
+<a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">napoved</span><span class="p">,</span> <span class="n">dejansko</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">izbrane</span><span class="p">,</span> <span class="n">napovedi</span><span class="p">,</span> <span class="n">y_izbrane</span><span class="p">):</span>
+<a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Instanca </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> je klasificirana kot </span><span class="si">{</span><span class="n">podatki</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">napoved</span><span class="p">]</span><span class="si">}</span><span class="s1"> dejansko pa je </span><span class="si">{</span><span class="n">podatki</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">dejansko</span><span class="p">]</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Instanca 1 je klasificirana kot setosa dejansko pa je setosa.
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>Instanca 31 je klasificirana kot setosa dejansko pa je setosa.
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>Instanca 61 je klasificirana kot versicolor dejansko pa je versicolor.
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>Instanca 91 je klasificirana kot versicolor dejansko pa je versicolor.
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>Instanca 121 je klasificirana kot virginica dejansko pa je virginica.
+</code></pre></div>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Aggarwal, C.C., Hinneburg, A. and Keim, D.A., 2001, January. On the surprising behavior of distance metrics in high dimensional space. In International conference on database theory (pp. 420-434). Springer, Berlin, Heidelberg.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Aha, D.W., Kibler, D. and Albert, M.K., 1991. Instance-based learning algorithms. Machine learning, 6(1), pp.37-66.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Goldberger, J., Hinton, G.E., Roweis, S. and Salakhutdinov, R.R., 2004. Neighbourhood components analysis. Advances in neural information processing systems, 17.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../04_klasifikacija/" class="md-footer__link md-footer__link--prev" aria-label="Prejšnja stran: Klasifikacija" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Prejšnja stran
+              </span>
+              Klasifikacija
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../06_kakovost_klasifikacije/" class="md-footer__link md-footer__link--next" aria-label="Naslednja stran: Kakovost klasifikacije" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Naslednja stran
+              </span>
+              Kakovost klasifikacije
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Vse pravice pridržane &copy; 2022 Sašo Karakatič, Iztok Fister ml.
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:saso.karakatic@um.si" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/sasokarakatic/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.suggest", "search.highlight", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "instant"], "translations": {"clipboard.copy": "Kopiraj v odlo\u017ei\u0161\u010de", "clipboard.copied": "Kopirano v odlo\u017ei\u0161\u010de", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "I\u0161\u010di", "search.result.placeholder": "Vpi\u0161i iskalni niz", "search.result.none": "Ni zadetkov", "search.result.one": "1 zadetek", "search.result.other": "# zadetkov", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
