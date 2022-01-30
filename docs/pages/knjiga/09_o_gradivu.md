@@ -123,9 +123,16 @@
 
 ## Navajanje gradiva
 
-=== "IEEE stil"
-    TODO
+=== "V besedlu"
+    Karakatič, S. in Fister Ml., I. (2022). _Strojno učenje: s Pythonom do prvega klasifikatorja._ Maribor: Univerzitetna založba. doi: 10.18690/um.feri.1.2022
 === "BibTeX"
     ```
-    TODO
+    @book{karakatic_strojnoucenje_2022,
+      title     = "Strojno učenje: s Pythonom do prvega klasifikatorja.",
+      author    = "Karakatič, Sašo and Fister Jr., Iztok",
+      year      = 2022,
+      publisher = "Univerzitetna založba",
+      address   = "Maribor",
+      doi       = "10.18690/um.feri.1.2022"
+    }
     ```

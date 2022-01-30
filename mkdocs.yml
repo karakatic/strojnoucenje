@@ -2,14 +2,14 @@ site_name: Strojno učenje
 site_url: https://www.strojnoucenje.si/
 site_author: Sašo Karakatič
 site_description: >-
-  TODO
+  Pomoč pri uporabi strojnega učenja v Pythonu.
 
 copyright: Vse pravice pridržane &copy; 2022 Sašo Karakatič, Iztok Fister ml.
 
 nav:
   - Domov: "index.md"
-  - Knjiga:
-    - Struktura: "pages/knjiga/00_struktura.md"
+  - Gradivo:
+    - Povzetek gradiva: "pages/knjiga/00_knjiga.md"
     - Uvod: "pages/knjiga/01_uvod.md"
     - Vzpostavitev okolja: "pages/knjiga/02_okolje.md"
     - Strojno učenje: "pages/knjiga/03_strojno_ucenje.md"
@@ -17,7 +17,7 @@ nav:
     - K najbližjih sosedov: "pages/knjiga/05_knn.md"
     - Kakovost klasifikacije: "pages/knjiga/06_kakovost_klasifikacije.md"
     - O gradivu: "pages/knjiga/09_o_gradivu.md"
-  - Sodelovanje: "pages/sodelovanje.md"
+  #- Sodelovanje: "pages/sodelovanje.md"
   - Avtorja: "pages/avtorja.md"
 plugins:
   - search

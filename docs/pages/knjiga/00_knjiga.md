@@ -1,3 +1,13 @@
+# Strojno učenje
+
+Gradivo služi kot uvod v področje strojnega učenja za vse, ki imajo vsaj osnovne izkušnje s programiranjem. Pregledajo se pomembni pojmi strojnega učenja (model znanja, učna in testna množica, algoritem učenja), natančneje pa se predstavi tehnika klasifikacije in način ovrednotenja kvalitete modelov znanja klasifikacije. Spozna se algoritem klasifikacije k najbližjih sosedov in predstavi se uporaba tega algoritma - tako konceptualno kakor v programski kodi. Knjiga poda številne primere v programskem jeziku Python in okolju Jupyter Notebooks. Za namen utrjevanja znanja pa so ponujene naloge (tako računske, kot programerske) s podanimi rešitvami.
+
+**Avtorja:** Sašo Karakatič & Iztok Fister ml.
+
+**Ključne besede:** strojno učenje, umetna inteligenca, klasifikacija, k najbližjih sosedov, Python
+
+## Struktura gradiva
+
 [`Uvod`](01_uvod.md)
 
 : Začetno poglavje predstavi namen gradiva.
